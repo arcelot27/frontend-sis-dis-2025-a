@@ -1,0 +1,25 @@
+
+#container:first-child{
+  margin-left:  3rem;
+}
+#container:first-child img{
+  width: 14rem;
+  height: 4rem;
+}
+#container:last-child{
+  margin-right: 6rem ;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+a i:hover{  
+  color:  #3f9c9c;
+}
+a i{
+  font-size: 1.5rem;
+}
+h1, p {
+    margin: 0;
+  }
+  

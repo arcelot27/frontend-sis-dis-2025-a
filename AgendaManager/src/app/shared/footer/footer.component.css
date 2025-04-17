@@ -1,0 +1,46 @@
+footer {
+    font-size: 0.9rem;
+    background-color: #3f9c9c;
+  }
+  
+  footer a {
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+    color: #ccc;
+  }
+  h5 {
+    justify-content: center;
+    padding-left: 30%;
+  }
+.container {
+    padding-left: 2.5rem ;
+  }
+.container > div:first-child {
+  margin-left: 20rem;
+}
+.container > div:first-child >div:last-child {
+  margin-left: -10rem;
+  padding-left: 5rem;
+  border-left: 1px solid #ccc;  
+}
+
+
+#info{
+  margin-left: 1rem;
+  width: 50%; 
+  margin-top: -10px;
+}
+
+.container > div:last-child {
+  margin-top: 1rem;
+  border-radius: 10px  ;
+  padding: .5rem 1rem;
+  background-color: #3094cac7;
+}
+.container > div:last-child > div:first-child a {
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
