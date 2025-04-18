@@ -1,0 +1,42 @@
+<div class="container py-5">
+    <div class="row">
+      <!-- Sección del perfil -->
+      <div class="col-md-3">
+        <h5 class="fw-bold">Perfil</h5>
+        <form>
+          <div class="mb-3">
+            <label for="role" class="form-label">Roll</label>
+            <input type="text" id="role" class="form-control" value="Profesor" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" id="name" class="form-control" value="Nombre" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input type="email" id="email" class="form-control" value="correo@corhuila.edu.co" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" id="password" class="form-control" value="**********" disabled>
+          </div>
+          <button type="button" class="btn btn-primary w-100">Editar</button>
+        </form>
+      </div>
+
+      <!-- Botones de formularios -->
+      <div class="col-md-6 text-center">
+        <div class="d-flex gap-3">
+          <button class="btn btn-outline-primary" (click)="comenzarFormulario()">Formularios</button>
+          <button class="btn btn-outline-success">Aprobados</button>
+          <button class="btn btn-outline-danger">No aprobados</button>
+          <button class="btn btn-outline-warning">Formulario devueltos</button>
+        </div>
+      </div>
+
+      <!-- Logo de CORHUILA -->
+      <div class="col-md-3 text-center">
+        <img src="LOGO.jpg" alt="Logo CORHUILA" class="img-fluid mb-3" style="max-height: 250px;">
+      </div>
+    </div>
+  </div>

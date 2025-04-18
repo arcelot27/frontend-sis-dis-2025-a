@@ -7,20 +7,24 @@ import { Paso2LaboresAcademicasComponent } from './formulario/paso2-labores-acad
 import  { Paso3LaboresCientificasComponent } from './formulario/paso3-labores-cientificas/paso3-labores-cientificas.component';
 import { Paso4LaboresExtensionComponent } from './formulario/paso4-labores-extension/paso4-labores-extension.component';
 import { Paso5GestionAcademicasComponent } from './formulario/paso5-gestion-academicas/paso5-gestion-academicas.component';
+import {DashboardComponent} from './user/profesor/dashboard/dashboard.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     CommonModule,
-    HeaderComponent,
-    FooterComponent,
+    CommonModule, 
+    RouterOutlet,
+    HeaderComponent,  
     //FormularioComponent
     //Paso2LaboresAcademicasComponent,
-    //Paso3LaboresCientificasComponent
-    //Paso4LaboresExtensionComponent
-    Paso5GestionAcademicasComponent,
-
+    //Paso3LaboresCientificasComponent,
+    //Paso4LaboresExtensionComponent,
+    //Paso5GestionAcademicasComponent,
+    //DashboardComponent,
+    FooterComponent,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

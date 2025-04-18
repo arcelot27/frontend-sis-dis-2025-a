@@ -1,5 +1,5 @@
 .fondo {
-  background-image: url('../../assets/img/imagen_corhuila.jpeg');
+  background-image: url('../../../public/imagen_corhuila.jpg');
  /* Reemplaza con tu imagen */
   background-size: cover;
   background-position: center;

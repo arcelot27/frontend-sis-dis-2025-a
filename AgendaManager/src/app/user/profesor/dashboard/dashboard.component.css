@@ -1,0 +1,11 @@
+body {
+    background-color: #f8f9fa; /* Color de fondo suave */
+  }
+  
+  h5 {
+    color: #343a40; /* Color de los títulos */
+  }
+  
+  button {
+    font-weight: bold; /* Negrita para los textos de los botones */
+  }
