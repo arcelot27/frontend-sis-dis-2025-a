@@ -6,7 +6,7 @@ import { RouterOutlet } from '@angular/router';
 
   standalone: true,
   templateUrl: './formulario.component.html',
-  styleUrl: './formulario.component.css'
+  styleUrls: ['./formulario.component.css']
 })
 export class FormularioComponent {
   title = 'AgendaManager';

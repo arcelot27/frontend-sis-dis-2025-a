@@ -1,0 +1,88 @@
+.fondo {
+  background-image: url('../../../assets/img/imagen_corhuila.jpeg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+}
+
+.contenedor-formulario {
+  display: flex;
+  background: transparent;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.formulario {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 950px;
+  flex: 1;
+}
+
+.formulario h3 {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.titulo {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.subtitulo {
+  font-weight: bold;
+  margin-top: 1.5rem;
+}
+
+.grid-actividades {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.actividad-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding-right: 0.5rem;
+}
+
+.grid-actividades input {
+  padding: 0.4rem;
+  border-radius: 10px;
+  border: 1px solid #000;
+  width: 100%;
+}
+
+.botones {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.botones button {
+  background-color: #3db4ac;
+  color: white;
+  border: none;
+  padding: 0.7rem 2rem;
+  border-radius: 20px;
+}
