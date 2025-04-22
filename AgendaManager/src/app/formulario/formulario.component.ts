@@ -1,7 +1,7 @@
-// src/app/formulario/formulario.component.ts
+
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router'; // Importa Router
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-formulario',
@@ -11,11 +11,11 @@ import { Router } from '@angular/router'; // Importa Router
   styleUrls: ['./formulario.component.css']
 })
 export class FormularioComponent {
-  constructor(private router: Router) {} // Inyecta Router
+  constructor(private router: Router) {}
   volverADashboard() {
-    this.router.navigate(['/dashboard']); // Navegación programática
+    this.router.navigate(['/dashboard']); 
   }
   irALaboresAcademicas() {
-    this.router.navigate(['/labores-academicas']); // Navegación programática
+    this.router.navigate(['/labores-academicas']); 
   }
 }

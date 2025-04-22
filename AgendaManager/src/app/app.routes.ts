@@ -1,4 +1,4 @@
-// src/app/app.routes.ts
+
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
@@ -36,5 +36,27 @@ export const routes: Routes = [
     path: 'Gestion-Academica',
     loadComponent: () => import('./formulario/paso5-gestion-academicas/paso5-gestion-academicas.component').then(m => m.Paso5GestionAcademicasComponent),
     title: 'Gestion Academica'
-  }
+  },
+  {
+    path: 'Historial-profesor',
+    loadComponent: () => import('./user/profesor/historial/historial.component').then(m => m.HistorialComponent),
+    title: 'Historial-profesor'
+  },
+  {
+    path: 'FormularioDevuelto-profesor',
+    loadComponent: () => import('./user/profesor/formularios-devueltos/formularios-devueltos.component').then(m => m.FormulariosDevueltosComponent),
+    title: 'FormularioDevuelto-profesor'
+  },
+
+
+  {
+    path: 'not-found',
+    loadComponent: () => import('./not-found/not-found.component').then(m => m.NotFoundComponent),
+    title: 'not-found'
+  },
+  {
+    path: '**',
+    loadComponent: () => import('./not-found/not-found.component').then(m => m.NotFoundComponent),
+    title: 'DEFAULT'
+  },
 ];

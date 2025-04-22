@@ -1,7 +1,7 @@
-// src/app/user/profesor/dashboard/dashboard.component.ts
+
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router'; // Importar Router
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-dashboard',
@@ -11,9 +11,15 @@ import { Router } from '@angular/router'; // Importar Router
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
-  constructor(private router: Router) {} // Inyección correcta de Router
+  constructor(private router: Router) {} 
 
   comenzarFormulario() {
-    this.router.navigate(['/formulario']); // Navegación al formulario
+    this.router.navigate(['/formulario']); 
+  }
+  IrAHistorialProfesor() {
+    this.router.navigate(['/Historial-profesor']); 
+  }
+  IrAFormulariosProfesor(){
+    this.router.navigate(['/FormularioDevuelto-profesor']); 
   }
 }

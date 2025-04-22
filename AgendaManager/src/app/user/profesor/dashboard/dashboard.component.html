@@ -1,6 +1,6 @@
 <div class="container py-5">
     <div class="row">
-      <!-- Sección del perfil -->
+
       <div class="col-md-3">
         <h5 class="fw-bold">Perfil</h5>
         <form>
@@ -24,17 +24,15 @@
         </form>
       </div>
 
-      <!-- Botones de formularios -->
+
       <div class="col-md-6 text-center">
         <div class="d-flex gap-3">
           <button class="btn btn-outline-primary" (click)="comenzarFormulario()">Formularios</button>
-          <button class="btn btn-outline-success">Aprobados</button>
-          <button class="btn btn-outline-danger">No aprobados</button>
-          <button class="btn btn-outline-warning">Formulario devueltos</button>
+          <button class="btn btn-outline-success" (click)="IrAHistorialProfesor()">Historial</button>
+          <button class="btn btn-outline-warning" (click)="IrAFormulariosProfesor()">Formulario devueltos</button>
         </div>
       </div>
 
-      <!-- Logo de CORHUILA -->
       <div class="col-md-3 text-center">
         <img src="LOGO.jpg" alt="Logo CORHUILA" class="img-fluid mb-3" style="max-height: 250px;">
       </div>
