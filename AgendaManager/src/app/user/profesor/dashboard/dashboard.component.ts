@@ -101,6 +101,6 @@ export class DashboardComponent implements OnInit {
     this.modoEdicion = !this.modoEdicion;
   }
 
-  modoEdicion: boolean = false;
+  modoEdicion: boolean = false;
 }
 

@@ -6,7 +6,7 @@
         <form *ngIf="usuario" #formulario="ngForm">
           <div class="mb-3">
             <label for="role" class="form-label">Rol</label>
-            <input type="text" id="role" class="form-control" [(ngModel)]="usuario.rol" [value]="usuario.rol || 'Docente'" disabled>
+            <input type="text" id="role" class="form-control" [(ngModel)]="usuario.rol" name="rol" [value]="usuario.rol'" disabled>
 
           </div>
           <div class="mb-3">
@@ -17,10 +17,7 @@
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Correo electrónico</label>
-            <input type="email" id="email" class="form-control" [value]="usuario.correo" [attr.disabled]="inputsDeshabilitados ">
-
-
-
+            <input type="email" id="email" class="form-control" [value]="usuario.correo" name="correo" [attr.disabled]="inputsDeshabilitados ">
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Contraseña</label>
