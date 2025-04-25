@@ -7,7 +7,7 @@ import { UsuarioDTO } from './usuario.dto'; // Asegúrate de que la ruta sea cor
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = '/api/usuarios';  // Usa /api (ruta definida en proxy)
+  private apiUrl = 'http://localhost:8080/AgendaManager/api/usuarios';  // Usa /api (ruta definida en proxy)
 
   constructor(private http: HttpClient) {}
 
