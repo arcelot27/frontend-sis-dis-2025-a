@@ -26,13 +26,18 @@ export class DashboardComponent implements OnInit {
   constructor(
     private router: Router,
     private apiService: ApiService,
-    private http: HttpClient 
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
     this.apiService.getPerfilUsuario().subscribe({
       next: (data) => {
         this.usuario = data;
+
+
+        this.usuario.nombre = '';
+        this.usuario.contrasena = '';
+
       },
       error: (error) => {
         console.error('Error al obtener el perfil del usuario', error);
@@ -55,7 +60,11 @@ export class DashboardComponent implements OnInit {
   actualizarUsuario() {
     const datos = {
       nombre: this.usuario.nombre,
-      contrasena: this.usuario.contrasena
+      contrasena: this.usuario.contrasena,
+      rol: this.usuario.rol || 'Docente'
+
+
+
     };
 
     console.log('Datos a enviar:', datos);
