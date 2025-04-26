@@ -34,10 +34,6 @@ export class DashboardComponent implements OnInit {
       next: (data) => {
         this.usuario = data;
 
-
-        this.usuario.nombre = '';
-        this.usuario.contrasena = '';
-
       },
       error: (error) => {
         console.error('Error al obtener el perfil del usuario', error);
@@ -60,11 +56,7 @@ export class DashboardComponent implements OnInit {
   actualizarUsuario() {
     const datos = {
       nombre: this.usuario.nombre,
-      contrasena: this.usuario.contrasena,
-      rol: this.usuario.rol || 'Docente'
-
-
-
+      contrasena: this.usuario.contrasena,    
     };
 
     console.log('Datos a enviar:', datos);

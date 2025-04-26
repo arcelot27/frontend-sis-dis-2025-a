@@ -12,41 +12,40 @@
         <div class="formulario-grid">
           <div class="campo">
             <label for="nombres">Nombres:</label>
-            <input type="text" id="nombres" />
+            <input type="text" id="nombres" [(ngModel)]="formulario.nombres" name="nombres" required />
           </div>
 
           <div class="campo">
             <label for="apellidos">Apellidos:</label>
-            <input type="text" id="apellidos" />
+            <input type="text" id="apellidos" [(ngModel)]="formulario.apellidos" name="apellidos" required />
           </div>
 
           <div class="campo">
             <label for="facultad">Facultad:</label>
-            <input type="text" id="facultad" />
+            <input type="text" id="facultad" [(ngModel)]="formulario.facultad" name="facultad" />
           </div>
 
           <div class="campo">
             <label for="programa">Programa:</label>
-            <input type="text" id="programa" />
+            <input type="text" id="programa" [(ngModel)]="formulario.programa" name="programa" />
           </div>
 
           <div class="campo">
             <label for="fecha">Fecha:</label>
-            <input type="date" id="fecha" />
+            <input type="date" id="fecha" [(ngModel)]="formulario.fecha" name="fecha" />
           </div>
 
           <div class="campo">
             <label for="periodo">Periodo:</label>
-            <input type="text" id="periodo" />
+            <input type="text" id="periodo" [(ngModel)]="formulario.periodo" name="periodo" />
           </div>
         </div>
 
         <div class="botones">
-          <button (click)="volverADashboard()">Atras</button>
-          <button (click)="irALaboresAcademicas()">Siguiente</button>
+          <button (click)="volverADashboard()">Atrás</button>
+          <button (click)="guardarYIrALaboresAcademicas()">Siguiente</button>
         </div>
       </div>
     </div>
   </div>
 </div>
-
