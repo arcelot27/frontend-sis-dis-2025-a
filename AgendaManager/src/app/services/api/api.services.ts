@@ -10,12 +10,12 @@ import { Observable } from 'rxjs';
 export class ApiService {
 
 
-  private usuariosapiUrl = 'http://localhost:8080/AgendaManager/api/usuarios/perfil';  // Ajusta si cambia
+  private usuariosapiUrl = 'http://localhost:8080/AgendaManager/api/usuarios/perfil';  
 
   constructor(private http: HttpClient) {}
 
   getUsuarios() {
-    return this.http.get<UsuarioDTO[]>(this.usuariosapiUrl);
+    return this.http.get<UsuarioDTO[]>(this.usuariosapiUrl); 
   }
 
   getPerfilUsuario() {
@@ -25,7 +25,13 @@ export class ApiService {
   private formularioapiUrl = 'http://localhost:8080/AgendaManager/api/formulario';
   
   crearFormulario(formulario: any): Observable<any> {
-    const url = 'http://localhost:8080/api/formularios'; // Ajusta si es diferente
+    const url = 'http://localhost:8080/api/formulario'; 
     return this.http.post<any>(url, formulario);
   }
+  private laboresAcademicasapiUrl = 'http://localhost:8080/AgendaManager/api/labores-academicas';
+  guardarLaboresAcademicas(datosLabores: any): Observable<any> {
+    const url = 'http://localhost:8080/api/labores-academicas'; 
+    return this.http.post<any>(url, datosLabores);
+  }
+
 }

@@ -13,7 +13,7 @@ import { UsuarioDTO } from '../../../services/api/usuario.dto';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule], // Quitamos HttpClient aquí
+  imports: [CommonModule, FormsModule, HttpClientModule], 
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
