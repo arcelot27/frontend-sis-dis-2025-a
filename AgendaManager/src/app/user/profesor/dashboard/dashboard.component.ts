@@ -13,86 +13,84 @@ import { UsuarioDTO } from '../../../services/api/usuario.dto';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule], 
+  imports: [CommonModule, FormsModule, HttpClientModule],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
 
-  inputsDeshabilitados = true;
-  mostrarContrasena = false;
-  usuario!: UsuarioDTO;
+  usuario: UsuarioDTO = {
+    id: 0,
+    nombre: '',
+    correo: '',
+    rol: '',
+    contrasena: ''
+  };
+
+  mostrarContrasena: boolean = false;
+  inputsDeshabilitados: boolean = true;
 
   constructor(
-    private router: Router,
     private apiService: ApiService,
+    private router: Router,
     private http: HttpClient
   ) {}
 
   ngOnInit(): void {
+    this.obtenerPerfilUsuario();
+  }
+
+  obtenerPerfilUsuario(): void {
     this.apiService.getPerfilUsuario().subscribe({
       next: (data) => {
         this.usuario = data;
-
+        console.log("Perfil cargado:", this.usuario);
       },
       error: (error) => {
-        console.error('Error al obtener el perfil del usuario', error);
+        console.error('Error al obtener perfil:', error);
       }
     });
   }
 
-  editar() {
-    if (!this.inputsDeshabilitados) {
-      // Guardar cambios
-      this.actualizarUsuario();
-    }
+  editar(): void {
     this.inputsDeshabilitados = !this.inputsDeshabilitados;
+
+    if (this.inputsDeshabilitados) {
+      console.log('ID del usuario:', this.usuario.id);
+
+      const datos = {
+        nombre: this.usuario.nombre,
+        contrasena: this.usuario.contrasena
+      };
+
+      this.http.put(`http://localhost:8080/api/usuarios/${this.usuario.id}`, datos)
+        .subscribe({
+          next: () => {
+            console.log('Usuario actualizado correctamente');
+            alert('¡Datos actualizados!');
+          },
+          error: (error) => {
+            console.error('Error al actualizar usuario', error);
+            alert('Error al guardar los cambios.');
+          }
+        });
+    }
   }
 
-  toggleMostrarContrasena() {
+
+  toggleMostrarContrasena(): void {
     this.mostrarContrasena = !this.mostrarContrasena;
   }
 
-  actualizarUsuario() {
-    const datos = {
-      nombre: this.usuario.nombre,
-      contrasena: this.usuario.contrasena,    
-    };
-
-    console.log('Datos a enviar:', datos);
-
-    this.http.put(`http://localhost:8080/api/usuarios/${this.usuario.id}`, datos)
-      .subscribe({
-        next: (response) => {
-          console.log('Usuario actualizado', response);
-          alert('¡Usuario actualizado correctamente!');
-        },
-        error: (error) => {
-          console.error('Error al actualizar usuario', error);
-          alert('Hubo un error al actualizar.');
-        }
-      });
-  }
-
-  comenzarFormulario() {
+  comenzarFormulario(): void {
     this.router.navigate(['/formulario']);
   }
 
-  irAHistorialProfesor() {
-    this.router.navigate(['/Historial-profesor']);
-  }
-
-  irAFormulariosProfesor() {
+  irAFormulariosProfesor(): void {
     this.router.navigate(['/FormularioDevuelto-profesor']);
   }
 
-  toggleEdicion(): void {
-    if (this.modoEdicion) {
-      alert('Cambios guardados (simulado)');
-    }
-    this.modoEdicion = !this.modoEdicion;
+  irAHistorialProfesor(): void {
+    this.router.navigate(['/Historial-profesor']);
   }
-
-  modoEdicion: boolean = false;
 }
-

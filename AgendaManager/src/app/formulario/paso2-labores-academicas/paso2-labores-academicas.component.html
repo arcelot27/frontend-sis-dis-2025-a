@@ -5,7 +5,6 @@
 
         <h3>1. LABORES DE DOCENCIA, ACADÉMICAS Y FORMATIVAS</h3>
 
-
         <h4>1.1 Datos Generales</h4>
         <div class="formulario-grid">
           <div class="campo">
@@ -36,50 +35,61 @@
 
         <h4>1.2 Actividades Académicas</h4>
         <div class="formulario-grid-actividades">
+          <div></div>
+          <div><strong>Horas Semana</strong></div>
+          <div><strong>Horas Semestre</strong></div>
+          <div><strong>Descripción</strong></div>
+          <div><strong>Producto</strong></div>
+
           <div class="etiqueta-fila">Preparación de clases</div>
-          <input type="number" [(ngModel)]="prepHorasSemana" placeholder="Horas Semana" name="prepHorasSemana"/>
-          <input type="number" [(ngModel)]="prepHorasSemestre" placeholder="Horas Semestre" name="prepHorasSemestre"/>
-          <input type="text" [(ngModel)]="prepDescripcion" placeholder="Descripción" name="prepDescripcion"/>
-          <input type="text" [(ngModel)]="prepProducto" placeholder="Producto" name="prepProducto"/>
+          <input type="number" [(ngModel)]="prepHorasSemana" name="prepHorasSemana"/>
+          <input type="number" [(ngModel)]="prepHorasSemestre" name="prepHorasSemestre"/>
+          <input type="text" [(ngModel)]="prepDescripcion" name="prepDescripcion"/>
+          <input type="text" [(ngModel)]="prepProducto" name="prepProducto"/>
 
           <div class="etiqueta-fila">Evaluación de aprendizajes</div>
-          <input type="number" [(ngModel)]="evalHorasSemana" />
-          <input type="number" [(ngModel)]="evalHorasSemestre" />
-          <input type="text" [(ngModel)]="evalDescripcion" />
-          <input type="text" [(ngModel)]="evalProducto" />
+          <input type="number" [(ngModel)]="evalHorasSemana" name="evalHorasSemana" />
+          <input type="number" [(ngModel)]="evalHorasSemestre" name="evalHorasSemestre"/>
+          <input type="text" [(ngModel)]="evalDescripcion" name="evalDescripcion" />
+          <input type="text" [(ngModel)]="evalProducto"  name="evalProducto"/>
 
           <div class="etiqueta-fila">Gestión de eventos académicos</div>
-          <input type="number" [(ngModel)]="eventosHorasSemana" />
-          <input type="number" [(ngModel)]="eventosHorasSemestre" />
-          <input type="text" [(ngModel)]="eventosDescripcion" />
-          <input type="text" [(ngModel)]="eventosProducto" />
+          <input type="number" [(ngModel)]="eventosHorasSemana" name="eventosHorasSemana" />
+          <input type="number" [(ngModel)]="eventosHorasSemestre" name="eventosHorasSemestre" />
+          <input type="text" [(ngModel)]="eventosDescripcion"  name="eventosDescripcion"/>
+          <input type="text" [(ngModel)]="eventosProducto" name="eventosProducto" />
         </div>
-
 
         <h4>1.3 Actividades Formativas</h4>
         <div class="formulario-grid-actividades">
+          <div></div>
+          <div><strong>Horas Semana</strong></div>
+          <div><strong>Horas Semestre</strong></div>
+          <div><strong>Descripción</strong></div>
+          <div><strong>Producto</strong></div>
+
           <div class="etiqueta-fila">Acompañamiento académico</div>
-          <input type="number" [(ngModel)]="acompHorasSemana" />
-          <input type="number" [(ngModel)]="acompHorasSemestre" />
-          <input type="text" [(ngModel)]="acompDescripcion" />
-          <input type="text" [(ngModel)]="acompProducto" />
+          <input type="number" [(ngModel)]="acompHorasSemana" name="acompHorasSemana" />
+          <input type="number" [(ngModel)]="acompHorasSemestre" name="acompHorasSemestre" />
+          <input type="text" [(ngModel)]="acompDescripcion"  name="acompDescripcion"/>
+          <input type="text" [(ngModel)]="acompProducto" name="acompProducto" />
 
           <div class="etiqueta-fila">Cursos de fortalecimiento</div>
-          <input type="number" [(ngModel)]="cursosHorasSemana" />
-          <input type="number" [(ngModel)]="cursosHorasSemestre" />
-          <input type="text" [(ngModel)]="cursosDescripcion" />
-          <input type="text" [(ngModel)]="cursosProducto" />
+          <input type="number" [(ngModel)]="cursosHorasSemana" name="cursosHorasSemana" />
+          <input type="number" [(ngModel)]="cursosHorasSemestre" name="cursosHorasSemestre" />
+          <input type="text" [(ngModel)]="cursosDescripcion" name="cursosDescripcion" />
+          <input type="text" [(ngModel)]="cursosProducto" name="cursosProducto" />
 
           <div class="etiqueta-fila">Asesoría en emprendimiento</div>
-          <input type="number" [(ngModel)]="emprendHorasSemana" />
-          <input type="number" [(ngModel)]="emprendHorasSemestre" />
-          <input type="text" [(ngModel)]="emprendDescripcion" />
-          <input type="text" [(ngModel)]="emprendProducto" />
+          <input type="number" [(ngModel)]="emprendHorasSemana" name="emprendHorasSemana" />
+          <input type="number" [(ngModel)]="emprendHorasSemestre"  name="emprendHorasSemestre" />
+          <input type="text" [(ngModel)]="emprendDescripcion" name="emprendDescripcion" />
+          <input type="text" [(ngModel)]="emprendProducto"  name="emprendProducto"/>
         </div>
 
         <div class="botones">
           <button (click)="volverAFormulario()">Volver</button>
-          <button (click)="guardarLaboresAcademicas()">Guardar y Siguiente</button>
+          <button (click)="guardarLaboresAcademicas()">Siguiente</button>
         </div>
 
       </div>

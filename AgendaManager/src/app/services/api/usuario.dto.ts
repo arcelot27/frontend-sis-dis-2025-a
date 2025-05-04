@@ -1,5 +1,5 @@
 export interface UsuarioDTO {
-    id: any;
+    id: number;
     rol: string;
     nombre: string;
     correo: string;

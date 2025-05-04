@@ -10,7 +10,7 @@ import { FormularioDTO } from '../services/api/formulario.dto';
 @Component({
   selector: 'app-formulario',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule], 
+  imports: [CommonModule, FormsModule, HttpClientModule],
   templateUrl: './formulario.component.html',
   styleUrls: ['./formulario.component.css']
 })
@@ -18,7 +18,7 @@ export class FormularioComponent  {
 
   formulario: FormularioDTO = new FormularioDTO();
 
-  constructor(private router: Router, 
+  constructor(private router: Router,
     private apiService: ApiService,
     private http: HttpClient
   ) {}

@@ -16,9 +16,9 @@ import { ApiService } from '../../services/api/api.services';
 })
 export class Paso2LaboresAcademicasComponent implements OnInit {
 
-  id_formulario: number = 0;
+  id_formulario: number = 2;
 
- 
+
   nombreAsignatura: string = '';
   programa: string = '';
   grupo: string = '';
@@ -26,7 +26,7 @@ export class Paso2LaboresAcademicasComponent implements OnInit {
   horasSemanales: number = 0;
   horasSemestrales: number = 0;
 
- 
+
   prepHorasSemana: number = 0;
   prepHorasSemestre: number = 0;
   prepDescripcion: string = '';
@@ -71,62 +71,48 @@ ngOnInit(): void {
 
   guardarLaboresAcademicas(): void {
     const datosLabores = {
-      id_formulario: this.id_formulario,
-      nombreAsignatura: this.nombreAsignatura,
-      programa: this.programa,
-      grupo: this.grupo,
-      sede: this.sede,
-      horasSemanales: this.horasSemanales,
-      horasSemestrales: this.horasSemestrales,
+        id_formulario: this.id_formulario,
+        nombreAsignatura: this.nombreAsignatura,
+        programa: this.programa,
+        grupo: this.grupo,
+        sede: this.sede,
+        horasSemanales: this.horasSemanales,
+        horasSemestrales: this.horasSemestrales,
 
-      actividadesAcademicas: [
-        {
-          tipo: 'Preparación de clases',
-          horasSemana: this.prepHorasSemana,
-          horasSemestre: this.prepHorasSemestre,
-          descripcion: this.prepDescripcion,
-          producto: this.prepProducto
-        },
-        {
-          tipo: 'Evaluación de aprendizajes',
-          horasSemana: this.evalHorasSemana,
-          horasSemestre: this.evalHorasSemestre,
-          descripcion: this.evalDescripcion,
-          producto: this.evalProducto
-        },
-        {
-          tipo: 'Gestión de eventos académicos',
-          horasSemana: this.eventosHorasSemana,
-          horasSemestre: this.eventosHorasSemestre,
-          descripcion: this.eventosDescripcion,
-          producto: this.eventosProducto
-        }
-      ],
 
-      actividadesFormativas: [
-        {
-          tipo: 'Acompañamiento académico',
-          horasSemana: this.acompHorasSemana,
-          horasSemestre: this.acompHorasSemestre,
-          descripcion: this.acompDescripcion,
-          producto: this.acompProducto
-        },
-        {
-          tipo: 'Cursos de fortalecimiento',
-          horasSemana: this.cursosHorasSemana,
-          horasSemestre: this.cursosHorasSemestre,
-          descripcion: this.cursosDescripcion,
-          producto: this.cursosProducto
-        },
-        {
-          tipo: 'Asesoría en emprendimiento',
-          horasSemana: this.emprendHorasSemana,
-          horasSemestre: this.emprendHorasSemestre,
-          descripcion: this.emprendDescripcion,
-          producto: this.emprendProducto
-        }
-      ]
-    };
+        prepHorasSemana: this.prepHorasSemana,
+        prepHorasSemestre: this.prepHorasSemestre,
+        prepDescripcion: this.prepDescripcion,
+        prepProducto: this.prepProducto,
+
+        evalHorasSemana: this.evalHorasSemana,
+        evalHorasSemestre: this.evalHorasSemestre,
+        evalDescripcion: this.evalDescripcion,
+        evalProducto: this.evalProducto,
+
+        eventosHorasSemana: this.eventosHorasSemana,
+        eventosHorasSemestre: this.eventosHorasSemestre,
+        eventosDescripcion: this.eventosDescripcion,
+        eventosProducto: this.eventosProducto,
+
+
+        acompHorasSemana: this.acompHorasSemana,
+        acompHorasSemestre: this.acompHorasSemestre,
+        acompDescripcion: this.acompDescripcion,
+        acompProducto: this.acompProducto,
+
+        cursosHorasSemana: this.cursosHorasSemana,
+        cursosHorasSemestre: this.cursosHorasSemestre,
+        cursosDescripcion: this.cursosDescripcion,
+        cursosProducto: this.cursosProducto,
+
+        emprendHorasSemana: this.emprendHorasSemana,
+        emprendHorasSemestre: this.emprendHorasSemestre,
+        emprendDescripcion: this.emprendDescripcion,
+        emprendProducto: this.emprendProducto
+      };
+
+      console.log('➡️ Datos enviados al backend:', datosLabores);
 
     this.apiService.guardarLaboresAcademicas(datosLabores).subscribe({
       next: (response: any) => {

@@ -1,19 +1,39 @@
-export class LaboresAcademicasDTO {
-  nombreAsignatura: string = '';
-  programa: string = '';
-  grupo: string = '';
-  sede: string = '';
-  horasSemanales: number = 0;
-  horasSemestrales: number = 0;
+export interface LaboresAcademicasDTO {
+  nombreAsignatura: string;
+  programa: string;
+  grupo: string;
+  sede: string;
+  horasSemanales: number;
+  horasSemestrales: number;
 
-  preparacionClases: number = 0;
-  evaluacionAprendizajes: number = 0;
-  gestionEventos: number = 0;
-  descripcionActividades: string = '';
-  productoActividades: string = '';
+  prepHorasSemana: number;
+  prepHorasSemestre: number;
+  prepDescripcion: string;
+  prepProducto: string;
 
+  evalHorasSemana: number;
+  evalHorasSemestre: number;
+  evalDescripcion: string;
+  evalProducto: string;
 
-  acompanamientoAcademico: number = 0;
-  cursosFortalecimiento: number = 0;
-  asesoriaEmprendimiento: number = 0;
+  eventosHorasSemana: number;
+  eventosHorasSemestre: number;
+  eventosDescripcion: string;
+  eventosProducto: string;
+
+  acompHorasSemana: number;
+  acompHorasSemestre: number;
+  acompDescripcion: string;
+  acompProducto: string;
+
+  cursosHorasSemana: number;
+  cursosHorasSemestre: number;
+  cursosDescripcion: string;
+  cursosProducto: string;
+
+  emprendHorasSemana: number;
+  emprendHorasSemestre: number;
+  emprendDescripcion: string;
+  emprendProducto: string;
 }
+

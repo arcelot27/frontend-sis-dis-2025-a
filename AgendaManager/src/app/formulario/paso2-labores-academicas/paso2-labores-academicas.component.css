@@ -63,6 +63,7 @@
   grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
   gap: 0.5rem;
   margin-bottom: 2rem;
+  align-items: center;
 }
 
 .etiqueta-fila {
@@ -76,6 +77,15 @@
   padding: 0.4rem;
   border-radius: 8px;
   border: 1px solid #000;
+}
+
+/* Estilo para los encabezados */
+.formulario-grid-actividades > div:nth-child(-n+5) {
+  font-weight: bold;
+  text-align: center;
+  background-color: #f0f0f0;
+  padding: 0.5rem;
+  border-radius: 6px;
 }
 
 .botones {

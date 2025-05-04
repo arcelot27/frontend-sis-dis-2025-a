@@ -2,44 +2,56 @@
   <div class="overlay">
     <div class="contenedor-formulario">
       <div class="formulario">
+        <h3 class="titulo">2. LABORES CIENTÍFICAS</h3>
 
-        <h3>2. LABORES CIENTÍFICAS</h3>
+        <div class="encabezado-tabla">
+          <div class="columna-titulo">Actividad</div>
+          <div class="columna-titulo">Horas Semana</div>
+          <div class="columna-titulo">Horas Semestre</div>
+          <div class="columna-titulo">Descripción</div>
+          <div class="columna-titulo">Producto</div>
+        </div>
 
         <div class="formulario-grid-actividades">
+          <!-- Fila: Semilleros -->
           <div class="etiqueta-fila">Gestión de semilleros de investigación</div>
-          <input type="text" placeholder="Horas Semana" />
-          <input type="text" placeholder="Horas Semestre" />
-          <input type="text" placeholder="Descripción" />
-          <input type="text" placeholder="Producto" />
+          <input type="number" name="semilleros_horas_semana" [(ngModel)]="semilleros_horas_semana" />
+          <input type="number" name="semilleros_horas_semestre" [(ngModel)]="semilleros_horas_semestre" />
+          <input type="text" name="semilleros_descripcion" [(ngModel)]="semilleros_descripcion" />
+          <input type="text" name="semilleros_producto" [(ngModel)]="semilleros_producto" />
 
+          <!-- Fila: Propuestas -->
           <div class="etiqueta-fila">Elaboración de propuestas para convocatorias de CTel</div>
-          <input type="text" />
-          <input type="text" />
-          <input type="text" />
-          <input type="text" />
+          <input type="number" name="propuestas_horas_semana" [(ngModel)]="propuestas_horas_semana" />
+          <input type="number" name="propuestas_horas_semestre" [(ngModel)]="propuestas_horas_semestre" />
+          <input type="text" name="propuestas_descripcion" [(ngModel)]="propuestas_descripcion" />
+          <input type="text" name="propuestas_producto" [(ngModel)]="propuestas_producto" />
 
+          <!-- Fila: Proyectos -->
           <div class="etiqueta-fila">Gestión de proyectos de investigación en CTel</div>
-          <input type="text" />
-          <input type="text" />
-          <input type="text" />
-          <input type="text" />
+          <input type="number" name="proyectos_horas_semana" [(ngModel)]="proyectos_horas_semana" />
+          <input type="number" name="proyectos_horas_semestre" [(ngModel)]="proyectos_horas_semestre" />
+          <input type="text" name="proyectos_descripcion" [(ngModel)]="proyectos_descripcion" />
+          <input type="text" name="proyectos_producto" [(ngModel)]="proyectos_producto" />
 
+          <!-- Fila: Grupos -->
           <div class="etiqueta-fila">Dirección de grupos de investigación</div>
-          <input type="text" />
-          <input type="text" />
-          <input type="text" />
-          <input type="text" />
+          <input type="number" name="grupo_horas_semana" [(ngModel)]="grupo_horas_semana" />
+          <input type="number" name="grupo_horas_semestre" [(ngModel)]="grupo_horas_semestre" />
+          <input type="text" name="grupo_descripcion" [(ngModel)]="grupo_descripcion" />
+          <input type="text" name="grupo_producto" [(ngModel)]="grupo_producto" />
 
+          <!-- Fila: Artículos -->
           <div class="etiqueta-fila">Elaboración de artículos científicos y textos académicos</div>
-          <input type="text" />
-          <input type="text" />
-          <input type="text" />
-          <input type="text" />
+          <input type="number" name="articulos_horas_semana" [(ngModel)]="articulos_horas_semana" />
+          <input type="number" name="articulos_horas_semestre" [(ngModel)]="articulos_horas_semestre" />
+          <input type="text" name="articulos_descripcion" [(ngModel)]="articulos_descripcion" />
+          <input type="text" name="articulos_producto" [(ngModel)]="articulos_producto" />
         </div>
 
         <div class="botones">
-          <button (click)="volverAPaso2()">Volver</button>
-          <button (click)="irALaboresExtension()">Siguiente</button>
+          <button class="btn btn-secondary" (click)="volverAPaso2()">Volver</button>
+          <button class="btn btn-success" (click)="guardarLaboresCientificas()">Siguiente</button>
         </div>
       </div>
     </div>
