@@ -1,4 +1,3 @@
-
 <div class="fondo">
   <div class="overlay">
     <div class="contenedor-formulario">
@@ -9,35 +8,94 @@
       <div class="formulario">
         <h3>Agenda Intersemestral<br>Profesoral</h3>
 
+        <!-- Mensaje de alerta si hay campos incompletos -->
+        <div *ngIf="mensajeError" class="alerta-error">
+          {{ mensajeError }}
+        </div>
+
         <div class="formulario-grid">
           <div class="campo">
             <label for="nombres">Nombres:</label>
-            <input type="text" id="nombres" [(ngModel)]="formulario.nombres" name="nombres" required />
+            <input
+              type="text"
+              id="nombres"
+              [(ngModel)]="formulario.nombres"
+              name="nombres"
+              [ngClass]="{ invalido: camposIncompletos && esCampoInvalido(formulario.nombres) }"
+            />
+            <span *ngIf="camposIncompletos && esCampoInvalido(formulario.nombres)" class="error">
+              Este campo es obligatorio
+            </span>
           </div>
 
           <div class="campo">
             <label for="apellidos">Apellidos:</label>
-            <input type="text" id="apellidos" [(ngModel)]="formulario.apellidos" name="apellidos" required />
+            <input
+              type="text"
+              id="apellidos"
+              [(ngModel)]="formulario.apellidos"
+              name="apellidos"
+              [ngClass]="{ invalido: camposIncompletos && esCampoInvalido(formulario.apellidos) }"
+            />
+            <span *ngIf="camposIncompletos && esCampoInvalido(formulario.apellidos)" class="error">
+              Este campo es obligatorio
+            </span>
           </div>
 
           <div class="campo">
             <label for="facultad">Facultad:</label>
-            <input type="text" id="facultad" [(ngModel)]="formulario.facultad" name="facultad" />
+            <input
+              type="text"
+              id="facultad"
+              [(ngModel)]="formulario.facultad"
+              name="facultad"
+              [ngClass]="{ invalido: camposIncompletos && esCampoInvalido(formulario.facultad) }"
+            />
+            <span *ngIf="camposIncompletos && esCampoInvalido(formulario.facultad)" class="error">
+              Este campo es obligatorio
+            </span>
           </div>
 
           <div class="campo">
             <label for="programa">Programa:</label>
-            <input type="text" id="programa" [(ngModel)]="formulario.programa" name="programa" />
+            <input
+              type="text"
+              id="programa"
+              [(ngModel)]="formulario.programa"
+              name="programa"
+              [ngClass]="{ invalido: camposIncompletos && esCampoInvalido(formulario.programa) }"
+            />
+            <span *ngIf="camposIncompletos && esCampoInvalido(formulario.programa)" class="error">
+              Este campo es obligatorio
+            </span>
           </div>
 
           <div class="campo">
             <label for="fecha">Fecha:</label>
-            <input type="date" id="fecha" [(ngModel)]="formulario.fecha" name="fecha" />
+            <input
+              type="date"
+              id="fecha"
+              [(ngModel)]="formulario.fecha"
+              name="fecha"
+              [ngClass]="{ invalido: camposIncompletos && esCampoInvalido(formulario.fecha) }"
+            />
+            <span *ngIf="camposIncompletos && esCampoInvalido(formulario.fecha)" class="error">
+              Este campo es obligatorio
+            </span>
           </div>
 
           <div class="campo">
             <label for="periodo">Periodo:</label>
-            <input type="text" id="periodo" [(ngModel)]="formulario.periodo" name="periodo" />
+            <input
+              type="text"
+              id="periodo"
+              [(ngModel)]="formulario.periodo"
+              name="periodo"
+              [ngClass]="{ invalido: camposIncompletos && esCampoInvalido(formulario.periodo) }"
+            />
+            <span *ngIf="camposIncompletos && esCampoInvalido(formulario.periodo)" class="error">
+              Este campo es obligatorio
+            </span>
           </div>
         </div>
 

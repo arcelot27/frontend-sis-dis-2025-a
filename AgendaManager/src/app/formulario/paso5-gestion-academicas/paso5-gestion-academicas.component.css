@@ -1,70 +1,77 @@
 .fondo {
   background-image: url('../../../../public/imagen_corhuila.jpg');
-    background-size: cover;
-    background-position: center;
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  background-size: cover;
+  background-position: center;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10vh 0;
+}
 
-  .overlay {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.462);
-    padding: 2rem;
-  }
+.overlay {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 1rem;
+  width: 100%;
+  max-width: 70vw;
+}
 
-  .contenedor-formulario {
-    display: flex;
-    background: transparent;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-  }
+.formulario {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 1100px;
+  margin: auto;
+}
 
-  .formulario {
-    background: white;
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 1000px;
-    width: 100%;
-  }
+.formulario h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
 
-  .formulario h3 {
-    text-align: center;
-  }
+.formulario-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+  border: 1px solid #c9c8c8;
+}
 
-  .tabla {
-    width: 100%;
-    border-spacing: 1rem;
-  }
+.formulario-tabla th,
+.formulario-tabla td {
+  padding: 0.5rem;
+  border: 1px solid #cccccc; /* Gris claro */
+  text-align: center;
+  font-size: 14px;
+}
 
-  th, td {
-    padding: 0.5rem;
-    text-align: center;
-  }
+.formulario-tabla th {
+  background-color: #f2f2f2; /* Encabezado gris suave */
+  font-weight: bold;
+}
 
-  input {
-    width: 100%;
-    padding: 0.5rem;
-    border-radius: 10px;
-    border: 1px solid #000;
-  }
+.formulario-tabla input {
+  width: 95%;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  text-align: center;
+}
 
-  .botones {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
+.botones {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
 
-  button {
-    background-color: #3db4ac;
-    color: white;
-    border: none;
-    padding: 0.7rem 2rem;
-    border-radius: 20px;
-    cursor: pointer;
-  }
+button {
+  background-color: #3db4ac;
+  color: white;
+  border: none;
+  padding: 0.7rem 2rem;
+  border-radius: 20px;
+  cursor: pointer;
+}

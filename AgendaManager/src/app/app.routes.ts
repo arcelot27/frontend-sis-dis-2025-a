@@ -34,7 +34,7 @@ export const routes: Routes = [
   },
   {
     path: 'Gestion-Academica',
-    loadComponent: () => import('./formulario/paso5-gestion-academicas/paso5-gestion-academicas.component').then(m => m.Paso5GestionAcademicasComponent),
+    loadComponent: () => import('./formulario/paso5-gestion-academicas/paso5-gestion-academicas.component').then(m => m.Paso5GestionAcademicaComponent),
     title: 'Gestion Academica'
   },
   {

@@ -65,7 +65,7 @@ export class Paso2LaboresAcademicasComponent implements OnInit {
   ) {}
 ngOnInit(): void {
 
-  this.id_formulario = 1;
+  this.id_formulario = 2;
   console.log('ID del formulario forzado:', this.id_formulario);
 }
 

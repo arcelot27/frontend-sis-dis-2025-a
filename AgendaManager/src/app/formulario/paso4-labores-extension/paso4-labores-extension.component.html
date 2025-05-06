@@ -2,54 +2,86 @@
   <div class="overlay">
     <div class="contenedor-formulario">
       <div class="formulario">
-        <h3>3. LABORES EXTENSIÓN Y CULTURALES</h3>
 
-        <h4>3.1 ACTIVIDADES DE EXTENSIÓN</h4>
-        <div class="formulario-grid">
-          <div class="campo">Gestión de proyectos de consultoría</div>
-          <input type="text" placeholder="Horas Semana" />
-          <input type="text" placeholder="Horas Semestre" />
-          <input type="text" placeholder="Descripción" />
-          <input type="text" placeholder="Producto" />
+        <h3 class="titulo-centrado">3. LABORES EXTENSIÓN Y CULTURALES</h3>
 
-          <div class="campo">Acompañamiento al sector empresarial</div>
-          <input type="text" placeholder="Horas Semana" />
-          <input type="text" placeholder="Horas Semestre" />
-          <input type="text" placeholder="Descripción" />
-          <input type="text" placeholder="Producto" />
+        <h4 class="subtitulo-centrado">3.1 ACTIVIDADES DE EXTENSIÓN</h4>
+        <table class="formulario-tabla">
+          <thead>
+            <tr>
+              <th>Actividad</th>
+              <th>Horas Semana</th>
+              <th>Horas Semestre</th>
+              <th>Descripción</th>
+              <th>Producto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Gestión de proyectos de consultoría</td>
+              <td><input type="number" [(ngModel)]="consultoria_horas_semana" name="consultoria_horas_semana"></td>
+              <td><input type="number" [(ngModel)]="consultoria_horas_semestre" name="consultoria_horas_semestre"></td>
+              <td><input type="text" [(ngModel)]="consultoria_descripcion" name="consultoria_descripcion"></td>
+              <td><input type="text" [(ngModel)]="consultoria_producto" name="consultoria_producto"></td>
+            </tr>
+            <tr>
+              <td>Acompañamiento al sector empresarial</td>
+              <td><input type="number" [(ngModel)]="acompanamiento_horas_semana" name="acompanamiento_horas_semana"></td>
+              <td><input type="number" [(ngModel)]="acompanamiento_horas_semestre" name="acompanamiento_horas_semestre"></td>
+              <td><input type="text" [(ngModel)]="acompanamiento_descripcion" name="acompanamiento_descripcion"></td>
+              <td><input type="text" [(ngModel)]="acompanamiento_producto" name="acompanamiento_producto"></td>
+            </tr>
+            <tr>
+              <td>Participación en proyectos de intervención comunitaria</td>
+              <td><input type="number" [(ngModel)]="intervencion_horas_semana" name="intervencion_horas_semana"></td>
+              <td><input type="number" [(ngModel)]="intervencion_horas_semestre" name="intervencion_horas_semestre"></td>
+              <td><input type="text" [(ngModel)]="intervencion_descripcion" name="intervencion_descripcion"></td>
+              <td><input type="text" [(ngModel)]="intervencion_producto" name="intervencion_producto"></td>
+            </tr>
+          </tbody>
+        </table>
 
-          <div class="campo">Participación en proyectos de intervención comunitaria</div>
-          <input type="text" placeholder="Horas Semana" />
-          <input type="text" placeholder="Horas Semestre" />
-          <input type="text" placeholder="Descripción" />
-          <input type="text" placeholder="Producto" />
-        </div>
-
-        <h4>3.2 ACTIVIDADES CULTURALES</h4>
-        <div class="formulario-grid">
-          <div class="campo">Gestión de proyectos culturales</div>
-          <input type="text" placeholder="Horas Semana" />
-          <input type="text" placeholder="Horas Semestre" />
-          <input type="text" placeholder="Descripción" />
-          <input type="text" placeholder="Producto" />
-
-          <div class="campo">Promoción de la educación artística</div>
-          <input type="text" placeholder="Horas Semana" />
-          <input type="text" placeholder="Horas Semestre" />
-          <input type="text" placeholder="Descripción" />
-          <input type="text" placeholder="Producto" />
-
-          <div class="campo">Divulgación de los valores culturales</div>
-          <input type="text" placeholder="Horas Semana" />
-          <input type="text" placeholder="Horas Semestre" />
-          <input type="text" placeholder="Descripción" />
-          <input type="text" placeholder="Producto" />
-        </div>
+        <h4 class="subtitulo-centrado">3.2 ACTIVIDADES CULTURALES</h4>
+        <table class="formulario-tabla">
+          <thead>
+            <tr>
+              <th>Actividad</th>
+              <th>Horas Semana</th>
+              <th>Horas Semestre</th>
+              <th>Descripción</th>
+              <th>Producto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Gestión de proyectos culturales</td>
+              <td><input type="number" [(ngModel)]="proyectos_culturales_horas_semana" name="proyectos_culturales_horas_semana"></td>
+              <td><input type="number" [(ngModel)]="proyectos_culturales_horas_semestre" name="proyectos_culturales_horas_semestre"></td>
+              <td><input type="text" [(ngModel)]="proyectos_culturales_descripcion" name="proyectos_culturales_descripcion"></td>
+              <td><input type="text" [(ngModel)]="proyectos_culturales_producto" name="proyectos_culturales_producto"></td>
+            </tr>
+            <tr>
+              <td>Promoción de la educación artística</td>
+              <td><input type="number" [(ngModel)]="educacion_artistica_horas_semana" name="educacion_artistica_horas_semana"></td>
+              <td><input type="number" [(ngModel)]="educacion_artistica_horas_semestre" name="educacion_artistica_horas_semestre"></td>
+              <td><input type="text" [(ngModel)]="educacion_artistica_descripcion" name="educacion_artistica_descripcion"></td>
+              <td><input type="text" [(ngModel)]="educacion_artistica_producto" name="educacion_artistica_producto"></td>
+            </tr>
+            <tr>
+              <td>Divulgación de los valores culturales</td>
+              <td><input type="number" [(ngModel)]="divulgacion_valores_horas_semana" name="divulgacion_valores_horas_semana"></td>
+              <td><input type="number" [(ngModel)]="divulgacion_valores_horas_semestre" name="divulgacion_valores_horas_semestre"></td>
+              <td><input type="text" [(ngModel)]="divulgacion_valores_descripcion" name="divulgacion_valores_descripcion"></td>
+              <td><input type="text" [(ngModel)]="divulgacion_valores_producto" name="divulgacion_valores_producto"></td>
+            </tr>
+          </tbody>
+        </table>
 
         <div class="botones">
           <button (click)="volverAPaso3()">Volver</button>
-          <button (click)="irAGestionAcademica()">Siguiente</button>
+          <button (click)="guardarLaboresExtension()">Siguiente</button>
         </div>
+
       </div>
     </div>
   </div>

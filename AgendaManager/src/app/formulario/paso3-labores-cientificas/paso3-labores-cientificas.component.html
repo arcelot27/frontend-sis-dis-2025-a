@@ -2,59 +2,66 @@
   <div class="overlay">
     <div class="contenedor-formulario">
       <div class="formulario">
+
         <h3 class="titulo">2. LABORES CIENTÍFICAS</h3>
 
-        <div class="encabezado-tabla">
-          <div class="columna-titulo">Actividad</div>
-          <div class="columna-titulo">Horas Semana</div>
-          <div class="columna-titulo">Horas Semestre</div>
-          <div class="columna-titulo">Descripción</div>
-          <div class="columna-titulo">Producto</div>
-        </div>
-
-        <div class="formulario-grid-actividades">
-          <!-- Fila: Semilleros -->
-          <div class="etiqueta-fila">Gestión de semilleros de investigación</div>
-          <input type="number" name="semilleros_horas_semana" [(ngModel)]="semilleros_horas_semana" />
-          <input type="number" name="semilleros_horas_semestre" [(ngModel)]="semilleros_horas_semestre" />
-          <input type="text" name="semilleros_descripcion" [(ngModel)]="semilleros_descripcion" />
-          <input type="text" name="semilleros_producto" [(ngModel)]="semilleros_producto" />
-
-          <!-- Fila: Propuestas -->
-          <div class="etiqueta-fila">Elaboración de propuestas para convocatorias de CTel</div>
-          <input type="number" name="propuestas_horas_semana" [(ngModel)]="propuestas_horas_semana" />
-          <input type="number" name="propuestas_horas_semestre" [(ngModel)]="propuestas_horas_semestre" />
-          <input type="text" name="propuestas_descripcion" [(ngModel)]="propuestas_descripcion" />
-          <input type="text" name="propuestas_producto" [(ngModel)]="propuestas_producto" />
-
-          <!-- Fila: Proyectos -->
-          <div class="etiqueta-fila">Gestión de proyectos de investigación en CTel</div>
-          <input type="number" name="proyectos_horas_semana" [(ngModel)]="proyectos_horas_semana" />
-          <input type="number" name="proyectos_horas_semestre" [(ngModel)]="proyectos_horas_semestre" />
-          <input type="text" name="proyectos_descripcion" [(ngModel)]="proyectos_descripcion" />
-          <input type="text" name="proyectos_producto" [(ngModel)]="proyectos_producto" />
-
-          <!-- Fila: Grupos -->
-          <div class="etiqueta-fila">Dirección de grupos de investigación</div>
-          <input type="number" name="grupo_horas_semana" [(ngModel)]="grupo_horas_semana" />
-          <input type="number" name="grupo_horas_semestre" [(ngModel)]="grupo_horas_semestre" />
-          <input type="text" name="grupo_descripcion" [(ngModel)]="grupo_descripcion" />
-          <input type="text" name="grupo_producto" [(ngModel)]="grupo_producto" />
-
-          <!-- Fila: Artículos -->
-          <div class="etiqueta-fila">Elaboración de artículos científicos y textos académicos</div>
-          <input type="number" name="articulos_horas_semana" [(ngModel)]="articulos_horas_semana" />
-          <input type="number" name="articulos_horas_semestre" [(ngModel)]="articulos_horas_semestre" />
-          <input type="text" name="articulos_descripcion" [(ngModel)]="articulos_descripcion" />
-          <input type="text" name="articulos_producto" [(ngModel)]="articulos_producto" />
+        <div class="tabla-actividades">
+          <table class="tabla">
+            <thead>
+              <tr>
+                <th>Actividad</th>
+                <th>Horas Semana</th>
+                <th>Horas Semestre</th>
+                <th>Descripción</th>
+                <th>Producto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Gestión de semilleros de investigación</td>
+                <td><input type="number" [(ngModel)]="semilleros_horas_semana" name="semilleros_horas_semana" /></td>
+                <td><input type="number" [(ngModel)]="semilleros_horas_semestre" name="semilleros_horas_semestre" /></td>
+                <td><input type="text" [(ngModel)]="semilleros_descripcion" name="semilleros_descripcion" /></td>
+                <td><input type="text" [(ngModel)]="semilleros_producto" name="semilleros_producto" /></td>
+              </tr>
+              <tr>
+                <td>Elaboración de propuestas para convocatorias de CTel</td>
+                <td><input type="number" [(ngModel)]="propuestas_horas_semana" name="propuestas_horas_semana" /></td>
+                <td><input type="number" [(ngModel)]="propuestas_horas_semestre" name="propuestas_horas_semestre" /></td>
+                <td><input type="text" [(ngModel)]="propuestas_descripcion" name="propuestas_descripcion" /></td>
+                <td><input type="text" [(ngModel)]="propuestas_producto" name="propuestas_producto" /></td>
+              </tr>
+              <tr>
+                <td>Gestión de proyectos de investigación en CTel</td>
+                <td><input type="number" [(ngModel)]="proyectos_horas_semana" name="proyectos_horas_semana" /></td>
+                <td><input type="number" [(ngModel)]="proyectos_horas_semestre" name="proyectos_horas_semestre" /></td>
+                <td><input type="text" [(ngModel)]="proyectos_descripcion" name="proyectos_descripcion" /></td>
+                <td><input type="text" [(ngModel)]="proyectos_producto" name="proyectos_producto" /></td>
+              </tr>
+              <tr>
+                <td>Dirección de grupos de investigación</td>
+                <td><input type="number" [(ngModel)]="grupo_horas_semana" name="grupo_horas_semana" /></td>
+                <td><input type="number" [(ngModel)]="grupo_horas_semestre" name="grupo_horas_semestre" /></td>
+                <td><input type="text" [(ngModel)]="grupo_descripcion" name="grupo_descripcion" /></td>
+                <td><input type="text" [(ngModel)]="grupo_producto" name="grupo_producto" /></td>
+              </tr>
+              <tr>
+                <td>Elaboración de artículos científicos y textos académicos</td>
+                <td><input type="number" [(ngModel)]="articulos_horas_semana" name="articulos_horas_semana" /></td>
+                <td><input type="number" [(ngModel)]="articulos_horas_semestre" name="articulos_horas_semestre" /></td>
+                <td><input type="text" [(ngModel)]="articulos_descripcion" name="articulos_descripcion" /></td>
+                <td><input type="text" [(ngModel)]="articulos_producto" name="articulos_producto" /></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <div class="botones">
-          <button class="btn btn-secondary" (click)="volverAPaso2()">Volver</button>
-          <button class="btn btn-success" (click)="guardarLaboresCientificas()">Siguiente</button>
+          <button (click)="volverAPaso2()">Volver</button>
+          <button (click)="guardarLaboresCientificas()">Siguiente</button>
         </div>
+
       </div>
     </div>
   </div>
 </div>
-

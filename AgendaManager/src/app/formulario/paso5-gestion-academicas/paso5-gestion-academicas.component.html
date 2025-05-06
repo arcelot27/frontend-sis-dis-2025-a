@@ -4,54 +4,102 @@
       <div class="formulario">
         <h3>4. ACTIVIDADES DE GESTIÓN ACADÉMICA - ADMINISTRATIVA</h3>
 
-        <div class="formulario-grid">
-          <div class="campo-titulo"></div>
-          <div class="campo-titulo">DEDICACIÓN (HORAS SEMAN)</div>
-          <div class="campo-titulo">DEDICACIÓN (HORAS SEMES)</div>
-          <div class="campo-titulo">DESCRIPCIÓN DE LA ACTIVIDAD</div>
-          <div class="campo-titulo">PRODUCTO</div>
-
-          <div class="campo-label">Participación como jurado y/o asesor académico en trabajos de grado.</div>
-          <input /><input /><input /><input />
-
-          <div class="campo-label">Participación en procesos de registros calificados.</div>
-          <input /><input /><input /><input />
-
-          <div class="campo-label">Participación en procesos de acreditación.</div>
-          <input /><input /><input /><input />
-
-          <div class="campo-label">Participación en Consejos y Comités.</div>
-          <input /><input /><input /><input />
-
-          <div class="campo-label">Participación en procesos de autoevaluación.</div>
-          <input /><input /><input /><input />
-
-          <div class="campo-label">Participación en Investigaciones de mercado.</div>
-          <input /><input /><input /><input />
-
-          <div class="campo-label">Participación en procesos de formación de profesores.</div>
-          <input /><input /><input /><input />
-
-          <div class="campo-label">Programación y gestión de prácticas extramuros.</div>
-          <input /><input /><input /><input />
-
-          <div class="campo-label">Elaboración de exámenes para validaciones.</div>
-          <input /><input /><input /><input />
-
-          <div class="campo-label">Líder de CTel, extensión y proyección social.</div>
-          <input /><input /><input /><input />
-
-          <div class="campo-label">Líder de resultados de aprendizaje.</div>
-          <input /><input /><input /><input />
-        </div>
+        <table class="formulario-tabla">
+          <thead>
+            <tr>
+              <th style="width: 30%">Actividad</th>
+              <th>Horas Semana</th>
+              <th>Horas Semestre</th>
+              <th>Descripción</th>
+              <th>Producto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Participación como jurado y/o asesor académico en trabajos de grado</td>
+              <td><input type="number" [(ngModel)]="jurado_horas_semana" /></td>
+              <td><input type="number" [(ngModel)]="jurado_horas_semestre" /></td>
+              <td><input type="text" [(ngModel)]="jurado_descripcion" /></td>
+              <td><input type="text" [(ngModel)]="jurado_producto" /></td>
+            </tr>
+            <tr>
+              <td>Participación en procesos de registros calificados</td>
+              <td><input type="number" [(ngModel)]="registros_horas_semana" /></td>
+              <td><input type="number" [(ngModel)]="registros_horas_semestre" /></td>
+              <td><input type="text" [(ngModel)]="registros_descripcion" /></td>
+              <td><input type="text" [(ngModel)]="registros_producto" /></td>
+            </tr>
+            <tr>
+              <td>Participación en procesos de acreditación</td>
+              <td><input type="number" [(ngModel)]="acreditacion_horas_semana" /></td>
+              <td><input type="number" [(ngModel)]="acreditacion_horas_semestre" /></td>
+              <td><input type="text" [(ngModel)]="acreditacion_descripcion" /></td>
+              <td><input type="text" [(ngModel)]="acreditacion_producto" /></td>
+            </tr>
+            <tr>
+              <td>Participación en Consejos y Comités</td>
+              <td><input type="number" [(ngModel)]="consejos_horas_semana" /></td>
+              <td><input type="number" [(ngModel)]="consejos_horas_semestre" /></td>
+              <td><input type="text" [(ngModel)]="consejos_descripcion" /></td>
+              <td><input type="text" [(ngModel)]="consejos_producto" /></td>
+            </tr>
+            <tr>
+              <td>Participación en procesos de autoevaluación</td>
+              <td><input type="number" [(ngModel)]="autoevaluacion_horas_semana" /></td>
+              <td><input type="number" [(ngModel)]="autoevaluacion_horas_semestre" /></td>
+              <td><input type="text" [(ngModel)]="autoevaluacion_descripcion" /></td>
+              <td><input type="text" [(ngModel)]="autoevaluacion_producto" /></td>
+            </tr>
+            <tr>
+              <td>Participación en Investigaciones de mercado</td>
+              <td><input type="number" [(ngModel)]="investigaciones_mercado_horas_semana" /></td>
+              <td><input type="number" [(ngModel)]="investigaciones_mercado_horas_semestre" /></td>
+              <td><input type="text" [(ngModel)]="investigaciones_mercado_descripcion" /></td>
+              <td><input type="text" [(ngModel)]="investigaciones_mercado_producto" /></td>
+            </tr>
+            <tr>
+              <td>Participación en procesos de formación de profesores</td>
+              <td><input type="number" [(ngModel)]="formacion_profesores_horas_semana" /></td>
+              <td><input type="number" [(ngModel)]="formacion_profesores_horas_semestre" /></td>
+              <td><input type="text" [(ngModel)]="formacion_profesores_descripcion" /></td>
+              <td><input type="text" [(ngModel)]="formacion_profesores_producto" /></td>
+            </tr>
+            <tr>
+              <td>Programación y gestión de prácticas extramuros</td>
+              <td><input type="number" [(ngModel)]="extramuros_horas_semana" /></td>
+              <td><input type="number" [(ngModel)]="extramuros_horas_semestre" /></td>
+              <td><input type="text" [(ngModel)]="extramuros_descripcion" /></td>
+              <td><input type="text" [(ngModel)]="extramuros_producto" /></td>
+            </tr>
+            <tr>
+              <td>Elaboración de exámenes para validaciones</td>
+              <td><input type="number" [(ngModel)]="validaciones_horas_semana" /></td>
+              <td><input type="number" [(ngModel)]="validaciones_horas_semestre" /></td>
+              <td><input type="text" [(ngModel)]="validaciones_descripcion" /></td>
+              <td><input type="text" [(ngModel)]="validaciones_producto" /></td>
+            </tr>
+            <tr>
+              <td>Líder de CTel, extensión y proyección social</td>
+              <td><input type="number" [(ngModel)]="ctei_horas_semana" /></td>
+              <td><input type="number" [(ngModel)]="ctei_horas_semestre" /></td>
+              <td><input type="text" [(ngModel)]="ctei_descripcion" /></td>
+              <td><input type="text" [(ngModel)]="ctei_producto" /></td>
+            </tr>
+            <tr>
+              <td>Líder de resultados de aprendizaje</td>
+              <td><input type="number" [(ngModel)]="resultados_aprendizaje_horas_semana" /></td>
+              <td><input type="number" [(ngModel)]="resultados_aprendizaje_horas_semestre" /></td>
+              <td><input type="text" [(ngModel)]="resultados_aprendizaje_descripcion" /></td>
+              <td><input type="text" [(ngModel)]="resultados_aprendizaje_producto" /></td>
+            </tr>
+          </tbody>
+        </table>
 
         <div class="botones">
-          <button (click)="volverAPaso4() ">atras</button>
-          <button (click)="irADashboard()">Enviar</button>
+          <button (click)="volverALaboresExtension()">Volver</button>
+          <button (click)="guardarGestionAcademica()">Enviar Formulario</button>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-

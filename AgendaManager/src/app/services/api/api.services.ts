@@ -11,7 +11,9 @@ import { LaboresCientificasDTO } from './LaboresCientificas.dto';
 })
 export class ApiService {
 
+
   private usuariosapiUrl = 'http://localhost:8080/AgendaManager/api/usuarios/perfil';
+  private apiUrl = 'http://localhost:8080/AgendaManager/api';
 
   constructor(private http: HttpClient) {}
   getUsuarios() {
@@ -40,4 +42,14 @@ export class ApiService {
     });
   }
 
+  guardarLaboresExtension(datosExtension: any): Observable<any> {
+    return this.http.post('http://localhost:8080/api/labores-extension', datosExtension, {
+      responseType: 'text'
+    });
+  }
+  guardarGestionAcademica(datosGestion: any): Observable<any> {
+    return this.http.post('http://localhost:8080/api/gestion-academica', datosGestion, {
+      responseType: 'text'
+    });
+  }
 }

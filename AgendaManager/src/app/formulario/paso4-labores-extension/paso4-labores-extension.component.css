@@ -10,7 +10,7 @@
 
 .overlay {
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.6);
   padding: 2rem;
 }
 
@@ -85,4 +85,39 @@
   border: none;
   padding: 0.7rem 2rem;
   border-radius: 20px;
+}
+.formulario-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.formulario-tabla th, .formulario-tabla td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.formulario-tabla th {
+  background-color: #f2f2f2; /* Gris suave */
+  font-weight: bold;
+}
+
+input[type="text"], input[type="number"] {
+  width: 95%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.titulo-centrado, .subtitulo-centrado {
+  text-align: center;
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
 }
