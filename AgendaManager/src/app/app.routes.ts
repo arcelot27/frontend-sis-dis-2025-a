@@ -4,9 +4,29 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
+
+
+  /// Login
+
+  {
+    path: 'login',
+    loadComponent: () => import('./login/login.component').then(m => m.LoginComponent),
+    title: 'login'
+  },
+
+
+
+
+
+
+
+
+
+
+  // profesor
   {
     path: 'dashboard',
     loadComponent: () => import('./user/profesor/dashboard/dashboard.component').then(m => m.DashboardComponent),
@@ -47,6 +67,43 @@ export const routes: Routes = [
     loadComponent: () => import('./user/profesor/formularios-devueltos/formularios-devueltos.component').then(m => m.FormulariosDevueltosComponent),
     title: 'FormularioDevuelto-profesor'
   },
+
+  /// Jefe de Programa
+
+  {
+    path: 'dashboardJefePrograma',
+    loadComponent: () => import('./user/jefePrograma/dashboard/dashboard.component').then(m => m.DashboardComponent),
+    title: 'DashboardJefePrograma'
+  },
+
+
+
+
+
+
+  // facultad
+  
+  {
+    path: 'dashboardFacultad',
+    loadComponent: () => import('./user/facultad/dashboard/dashboard.component').then(m => m.DashboardComponent),
+    title: 'DashboardFacultad',
+  },
+
+
+
+
+
+
+  // facultad
+
+  {
+    path: 'dashboardCurriculo',
+    loadComponent: () => import('./user/curriculo/dashboard/dashboard.component').then(m => m.DashboardComponent),
+    title: 'DashboardCurriculo',
+  },
+
+
+
 
 
   {
