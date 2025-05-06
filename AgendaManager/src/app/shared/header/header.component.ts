@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   constructor(private router: Router) {}
-  volverNotfound() {
-    this.router.navigate(['/not-found']); 
+  login() {
+    this.router.navigate(['/login']); 
   }
 }
