@@ -79,16 +79,13 @@ export class DashboardComponent implements OnInit{
     toggleMostrarContrasena(): void {
       this.mostrarContrasena = !this.mostrarContrasena;
     }
+
   
-    comenzarFormulario(): void {
-      this.router.navigate(['/formulario']);
+    FormulariosAprobar(): void {
+      this.router.navigate(['/aprobar-formularios']);
     }
   
     irAFormulariosProfesor(): void {
-      this.router.navigate(['/FormularioDevuelto-profesor']);
-    }
-  
-    irAHistorialProfesor(): void {
       this.router.navigate(['/Historial-profesor']);
     }
 }

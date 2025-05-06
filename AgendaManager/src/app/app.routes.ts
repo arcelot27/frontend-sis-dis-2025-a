@@ -76,6 +76,12 @@ export const routes: Routes = [
     title: 'DashboardJefePrograma'
   },
 
+  {
+    path: 'aprobar-formularios',
+    loadComponent: () => import('./user/jefePrograma/formularios-aprobar/formularios-aprobar.component').then(m => m.FormulariosAprobarComponent),
+    title: 'aprobar-formularios'
+  },
+
 
 
 
