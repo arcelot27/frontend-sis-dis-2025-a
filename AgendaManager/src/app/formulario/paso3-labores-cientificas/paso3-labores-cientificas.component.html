@@ -5,6 +5,10 @@
 
         <h3 class="titulo">2. LABORES CIENTÍFICAS</h3>
 
+        <div *ngIf="camposIncompletos" class="alerta-error">
+          Por favor, completa todos los campos correctamente antes de continuar.
+        </div>
+
         <div class="tabla-actividades">
           <table class="tabla">
             <thead>
@@ -19,38 +23,38 @@
             <tbody>
               <tr>
                 <td>Gestión de semilleros de investigación</td>
-                <td><input type="number" [(ngModel)]="semilleros_horas_semana" name="semilleros_horas_semana" /></td>
-                <td><input type="number" [(ngModel)]="semilleros_horas_semestre" name="semilleros_horas_semestre" /></td>
-                <td><input type="text" [(ngModel)]="semilleros_descripcion" name="semilleros_descripcion" /></td>
-                <td><input type="text" [(ngModel)]="semilleros_producto" name="semilleros_producto" /></td>
+                <td><input type="number" [(ngModel)]="semilleros_horas_semana" [ngClass]="{'invalido': camposIncompletos && semilleros_horas_semana <= 0}" /></td>
+                <td><input type="number" [(ngModel)]="semilleros_horas_semestre" [ngClass]="{'invalido': camposIncompletos && semilleros_horas_semestre <= 0}" /></td>
+                <td><input type="text" [(ngModel)]="semilleros_descripcion" [ngClass]="{'invalido': camposIncompletos && !semilleros_descripcion}" /></td>
+                <td><input type="text" [(ngModel)]="semilleros_producto" [ngClass]="{'invalido': camposIncompletos && !semilleros_producto}" /></td>
               </tr>
               <tr>
                 <td>Elaboración de propuestas para convocatorias de CTel</td>
-                <td><input type="number" [(ngModel)]="propuestas_horas_semana" name="propuestas_horas_semana" /></td>
-                <td><input type="number" [(ngModel)]="propuestas_horas_semestre" name="propuestas_horas_semestre" /></td>
-                <td><input type="text" [(ngModel)]="propuestas_descripcion" name="propuestas_descripcion" /></td>
-                <td><input type="text" [(ngModel)]="propuestas_producto" name="propuestas_producto" /></td>
+                <td><input type="number" [(ngModel)]="propuestas_horas_semana" [ngClass]="{'invalido': camposIncompletos && propuestas_horas_semana <= 0}" /></td>
+                <td><input type="number" [(ngModel)]="propuestas_horas_semestre" [ngClass]="{'invalido': camposIncompletos && propuestas_horas_semestre <= 0}" /></td>
+                <td><input type="text" [(ngModel)]="propuestas_descripcion" [ngClass]="{'invalido': camposIncompletos && !propuestas_descripcion}" /></td>
+                <td><input type="text" [(ngModel)]="propuestas_producto" [ngClass]="{'invalido': camposIncompletos && !propuestas_producto}" /></td>
               </tr>
               <tr>
                 <td>Gestión de proyectos de investigación en CTel</td>
-                <td><input type="number" [(ngModel)]="proyectos_horas_semana" name="proyectos_horas_semana" /></td>
-                <td><input type="number" [(ngModel)]="proyectos_horas_semestre" name="proyectos_horas_semestre" /></td>
-                <td><input type="text" [(ngModel)]="proyectos_descripcion" name="proyectos_descripcion" /></td>
-                <td><input type="text" [(ngModel)]="proyectos_producto" name="proyectos_producto" /></td>
+                <td><input type="number" [(ngModel)]="proyectos_horas_semana" [ngClass]="{'invalido': camposIncompletos && proyectos_horas_semana <= 0}" /></td>
+                <td><input type="number" [(ngModel)]="proyectos_horas_semestre" [ngClass]="{'invalido': camposIncompletos && proyectos_horas_semestre <= 0}" /></td>
+                <td><input type="text" [(ngModel)]="proyectos_descripcion" [ngClass]="{'invalido': camposIncompletos && !proyectos_descripcion}" /></td>
+                <td><input type="text" [(ngModel)]="proyectos_producto" [ngClass]="{'invalido': camposIncompletos && !proyectos_producto}" /></td>
               </tr>
               <tr>
                 <td>Dirección de grupos de investigación</td>
-                <td><input type="number" [(ngModel)]="grupo_horas_semana" name="grupo_horas_semana" /></td>
-                <td><input type="number" [(ngModel)]="grupo_horas_semestre" name="grupo_horas_semestre" /></td>
-                <td><input type="text" [(ngModel)]="grupo_descripcion" name="grupo_descripcion" /></td>
-                <td><input type="text" [(ngModel)]="grupo_producto" name="grupo_producto" /></td>
+                <td><input type="number" [(ngModel)]="grupo_horas_semana" [ngClass]="{'invalido': camposIncompletos && grupo_horas_semana <= 0}" /></td>
+                <td><input type="number" [(ngModel)]="grupo_horas_semestre" [ngClass]="{'invalido': camposIncompletos && grupo_horas_semestre <= 0}" /></td>
+                <td><input type="text" [(ngModel)]="grupo_descripcion" [ngClass]="{'invalido': camposIncompletos && !grupo_descripcion}" /></td>
+                <td><input type="text" [(ngModel)]="grupo_producto" [ngClass]="{'invalido': camposIncompletos && !grupo_producto}" /></td>
               </tr>
               <tr>
                 <td>Elaboración de artículos científicos y textos académicos</td>
-                <td><input type="number" [(ngModel)]="articulos_horas_semana" name="articulos_horas_semana" /></td>
-                <td><input type="number" [(ngModel)]="articulos_horas_semestre" name="articulos_horas_semestre" /></td>
-                <td><input type="text" [(ngModel)]="articulos_descripcion" name="articulos_descripcion" /></td>
-                <td><input type="text" [(ngModel)]="articulos_producto" name="articulos_producto" /></td>
+                <td><input type="number" [(ngModel)]="articulos_horas_semana" [ngClass]="{'invalido': camposIncompletos && articulos_horas_semana <= 0}" /></td>
+                <td><input type="number" [(ngModel)]="articulos_horas_semestre" [ngClass]="{'invalido': camposIncompletos && articulos_horas_semestre <= 0}" /></td>
+                <td><input type="text" [(ngModel)]="articulos_descripcion" [ngClass]="{'invalido': camposIncompletos && !articulos_descripcion}" /></td>
+                <td><input type="text" [(ngModel)]="articulos_producto" [ngClass]="{'invalido': camposIncompletos && !articulos_producto}" /></td>
               </tr>
             </tbody>
           </table>

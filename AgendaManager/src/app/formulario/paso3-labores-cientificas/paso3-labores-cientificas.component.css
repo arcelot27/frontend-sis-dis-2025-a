@@ -39,7 +39,7 @@
   margin-bottom: 1.5rem;
 }
 
-/* Estilo tabla general */
+
 .tabla-actividades {
   border: 1px solid #ccc;
   border-radius: 12px;
@@ -89,4 +89,17 @@
   padding: 0.7rem 2rem;
   border-radius: 20px;
   cursor: pointer;
+}
+.invalido {
+  border: 2px solid red !important;
+}
+
+.alerta-error {
+  background-color: #f44336;
+  color: white;
+  padding: 0.8rem;
+  border-radius: 6px;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: bold;
 }

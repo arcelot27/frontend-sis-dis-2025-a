@@ -4,8 +4,12 @@
       <div class="formulario">
         <h3>4. ACTIVIDADES DE GESTIÓN ACADÉMICA - ADMINISTRATIVA</h3>
 
+        <div *ngIf="camposIncompletos" class="mensaje-error-superior">
+          Por favor completa todos los campos.
+        </div>
         <table class="formulario-tabla">
           <thead>
+
             <tr>
               <th style="width: 30%">Actividad</th>
               <th>Horas Semana</th>
@@ -17,80 +21,80 @@
           <tbody>
             <tr>
               <td>Participación como jurado y/o asesor académico en trabajos de grado</td>
-              <td><input type="number" [(ngModel)]="jurado_horas_semana" /></td>
-              <td><input type="number" [(ngModel)]="jurado_horas_semestre" /></td>
-              <td><input type="text" [(ngModel)]="jurado_descripcion" /></td>
-              <td><input type="text" [(ngModel)]="jurado_producto" /></td>
+              <td><input type="number" [(ngModel)]="jurado_horas_semana" [ngClass]="{'campo-error': camposIncompletos && jurado_horas_semana <= 0}" /></td>
+              <td><input type="number" [(ngModel)]="jurado_horas_semestre" [ngClass]="{'campo-error': camposIncompletos && jurado_horas_semestre <= 0}" /></td>
+              <td><input type="text" [(ngModel)]="jurado_descripcion" [ngClass]="{'campo-error': camposIncompletos && !jurado_descripcion}" /></td>
+              <td><input type="text" [(ngModel)]="jurado_producto" [ngClass]="{'campo-error': camposIncompletos && !jurado_producto}" /></td>
             </tr>
             <tr>
               <td>Participación en procesos de registros calificados</td>
-              <td><input type="number" [(ngModel)]="registros_horas_semana" /></td>
-              <td><input type="number" [(ngModel)]="registros_horas_semestre" /></td>
-              <td><input type="text" [(ngModel)]="registros_descripcion" /></td>
-              <td><input type="text" [(ngModel)]="registros_producto" /></td>
+              <td><input type="number" [(ngModel)]="registros_horas_semana" [ngClass]="{'campo-error': camposIncompletos && registros_horas_semana <= 0}" /></td>
+              <td><input type="number" [(ngModel)]="registros_horas_semestre" [ngClass]="{'campo-error': camposIncompletos && registros_horas_semestre <= 0}" /></td>
+              <td><input type="text" [(ngModel)]="registros_descripcion" [ngClass]="{'campo-error': camposIncompletos && !registros_descripcion}" /></td>
+              <td><input type="text" [(ngModel)]="registros_producto" [ngClass]="{'campo-error': camposIncompletos && !registros_producto}" /></td>
             </tr>
             <tr>
               <td>Participación en procesos de acreditación</td>
-              <td><input type="number" [(ngModel)]="acreditacion_horas_semana" /></td>
-              <td><input type="number" [(ngModel)]="acreditacion_horas_semestre" /></td>
-              <td><input type="text" [(ngModel)]="acreditacion_descripcion" /></td>
-              <td><input type="text" [(ngModel)]="acreditacion_producto" /></td>
+              <td><input type="number" [(ngModel)]="acreditacion_horas_semana" [ngClass]="{'campo-error': camposIncompletos && acreditacion_horas_semana <= 0}" /></td>
+              <td><input type="number" [(ngModel)]="acreditacion_horas_semestre" [ngClass]="{'campo-error': camposIncompletos && acreditacion_horas_semestre <= 0}" /></td>
+              <td><input type="text" [(ngModel)]="acreditacion_descripcion" [ngClass]="{'campo-error': camposIncompletos && !acreditacion_descripcion}" /></td>
+              <td><input type="text" [(ngModel)]="acreditacion_producto" [ngClass]="{'campo-error': camposIncompletos && !acreditacion_producto}" /></td>
             </tr>
             <tr>
               <td>Participación en Consejos y Comités</td>
-              <td><input type="number" [(ngModel)]="consejos_horas_semana" /></td>
-              <td><input type="number" [(ngModel)]="consejos_horas_semestre" /></td>
-              <td><input type="text" [(ngModel)]="consejos_descripcion" /></td>
-              <td><input type="text" [(ngModel)]="consejos_producto" /></td>
+              <td><input type="number" [(ngModel)]="consejos_horas_semana" [ngClass]="{'campo-error': camposIncompletos && consejos_horas_semana <= 0}" /></td>
+              <td><input type="number" [(ngModel)]="consejos_horas_semestre" [ngClass]="{'campo-error': camposIncompletos && consejos_horas_semestre <= 0}" /></td>
+              <td><input type="text" [(ngModel)]="consejos_descripcion" [ngClass]="{'campo-error': camposIncompletos && !consejos_descripcion}" /></td>
+              <td><input type="text" [(ngModel)]="consejos_producto" [ngClass]="{'campo-error': camposIncompletos && !consejos_producto}" /></td>
             </tr>
             <tr>
               <td>Participación en procesos de autoevaluación</td>
-              <td><input type="number" [(ngModel)]="autoevaluacion_horas_semana" /></td>
-              <td><input type="number" [(ngModel)]="autoevaluacion_horas_semestre" /></td>
-              <td><input type="text" [(ngModel)]="autoevaluacion_descripcion" /></td>
-              <td><input type="text" [(ngModel)]="autoevaluacion_producto" /></td>
+              <td><input type="number" [(ngModel)]="autoevaluacion_horas_semana" [ngClass]="{'campo-error': camposIncompletos && autoevaluacion_horas_semana <= 0}" /></td>
+              <td><input type="number" [(ngModel)]="autoevaluacion_horas_semestre" [ngClass]="{'campo-error': camposIncompletos && autoevaluacion_horas_semestre <= 0}" /></td>
+              <td><input type="text" [(ngModel)]="autoevaluacion_descripcion" [ngClass]="{'campo-error': camposIncompletos && !autoevaluacion_descripcion}" /></td>
+              <td><input type="text" [(ngModel)]="autoevaluacion_producto" [ngClass]="{'campo-error': camposIncompletos && !autoevaluacion_producto}" /></td>
             </tr>
             <tr>
               <td>Participación en Investigaciones de mercado</td>
-              <td><input type="number" [(ngModel)]="investigaciones_mercado_horas_semana" /></td>
-              <td><input type="number" [(ngModel)]="investigaciones_mercado_horas_semestre" /></td>
-              <td><input type="text" [(ngModel)]="investigaciones_mercado_descripcion" /></td>
-              <td><input type="text" [(ngModel)]="investigaciones_mercado_producto" /></td>
+              <td><input type="number" [(ngModel)]="investigaciones_mercado_horas_semana" [ngClass]="{'campo-error': camposIncompletos && investigaciones_mercado_horas_semana <= 0}" /></td>
+              <td><input type="number" [(ngModel)]="investigaciones_mercado_horas_semestre" [ngClass]="{'campo-error': camposIncompletos && investigaciones_mercado_horas_semestre <= 0}" /></td>
+              <td><input type="text" [(ngModel)]="investigaciones_mercado_descripcion" [ngClass]="{'campo-error': camposIncompletos && !investigaciones_mercado_descripcion}" /></td>
+              <td><input type="text" [(ngModel)]="investigaciones_mercado_producto" [ngClass]="{'campo-error': camposIncompletos && !investigaciones_mercado_producto}" /></td>
             </tr>
             <tr>
               <td>Participación en procesos de formación de profesores</td>
-              <td><input type="number" [(ngModel)]="formacion_profesores_horas_semana" /></td>
-              <td><input type="number" [(ngModel)]="formacion_profesores_horas_semestre" /></td>
-              <td><input type="text" [(ngModel)]="formacion_profesores_descripcion" /></td>
-              <td><input type="text" [(ngModel)]="formacion_profesores_producto" /></td>
+              <td><input type="number" [(ngModel)]="formacion_profesores_horas_semana" [ngClass]="{'campo-error': camposIncompletos && formacion_profesores_horas_semana <= 0}" /></td>
+              <td><input type="number" [(ngModel)]="formacion_profesores_horas_semestre" [ngClass]="{'campo-error': camposIncompletos && formacion_profesores_horas_semestre <= 0}" /></td>
+              <td><input type="text" [(ngModel)]="formacion_profesores_descripcion" [ngClass]="{'campo-error': camposIncompletos && !formacion_profesores_descripcion}" /></td>
+              <td><input type="text" [(ngModel)]="formacion_profesores_producto" [ngClass]="{'campo-error': camposIncompletos && !formacion_profesores_producto}" /></td>
             </tr>
             <tr>
               <td>Programación y gestión de prácticas extramuros</td>
-              <td><input type="number" [(ngModel)]="extramuros_horas_semana" /></td>
-              <td><input type="number" [(ngModel)]="extramuros_horas_semestre" /></td>
-              <td><input type="text" [(ngModel)]="extramuros_descripcion" /></td>
-              <td><input type="text" [(ngModel)]="extramuros_producto" /></td>
+              <td><input type="number" [(ngModel)]="extramuros_horas_semana" [ngClass]="{'campo-error': camposIncompletos && extramuros_horas_semana <= 0}" /></td>
+              <td><input type="number" [(ngModel)]="extramuros_horas_semestre" [ngClass]="{'campo-error': camposIncompletos && extramuros_horas_semestre <= 0}" /></td>
+              <td><input type="text" [(ngModel)]="extramuros_descripcion" [ngClass]="{'campo-error': camposIncompletos && !extramuros_descripcion}" /></td>
+              <td><input type="text" [(ngModel)]="extramuros_producto" [ngClass]="{'campo-error': camposIncompletos && !extramuros_producto}" /></td>
             </tr>
             <tr>
               <td>Elaboración de exámenes para validaciones</td>
-              <td><input type="number" [(ngModel)]="validaciones_horas_semana" /></td>
-              <td><input type="number" [(ngModel)]="validaciones_horas_semestre" /></td>
-              <td><input type="text" [(ngModel)]="validaciones_descripcion" /></td>
-              <td><input type="text" [(ngModel)]="validaciones_producto" /></td>
+              <td><input type="number" [(ngModel)]="validaciones_horas_semana" [ngClass]="{'campo-error': camposIncompletos && validaciones_horas_semana <= 0}" /></td>
+              <td><input type="number" [(ngModel)]="validaciones_horas_semestre" [ngClass]="{'campo-error': camposIncompletos && validaciones_horas_semestre <= 0}" /></td>
+              <td><input type="text" [(ngModel)]="validaciones_descripcion" [ngClass]="{'campo-error': camposIncompletos && !validaciones_descripcion}" /></td>
+              <td><input type="text" [(ngModel)]="validaciones_producto" [ngClass]="{'campo-error': camposIncompletos && !validaciones_producto}" /></td>
             </tr>
             <tr>
               <td>Líder de CTel, extensión y proyección social</td>
-              <td><input type="number" [(ngModel)]="ctei_horas_semana" /></td>
-              <td><input type="number" [(ngModel)]="ctei_horas_semestre" /></td>
-              <td><input type="text" [(ngModel)]="ctei_descripcion" /></td>
-              <td><input type="text" [(ngModel)]="ctei_producto" /></td>
+              <td><input type="number" [(ngModel)]="ctei_horas_semana" [ngClass]="{'campo-error': camposIncompletos && ctei_horas_semana <= 0}" /></td>
+              <td><input type="number" [(ngModel)]="ctei_horas_semestre" [ngClass]="{'campo-error': camposIncompletos && ctei_horas_semestre <= 0}" /></td>
+              <td><input type="text" [(ngModel)]="ctei_descripcion" [ngClass]="{'campo-error': camposIncompletos && !ctei_descripcion}" /></td>
+              <td><input type="text" [(ngModel)]="ctei_producto" [ngClass]="{'campo-error': camposIncompletos && !ctei_producto}" /></td>
             </tr>
             <tr>
               <td>Líder de resultados de aprendizaje</td>
-              <td><input type="number" [(ngModel)]="resultados_aprendizaje_horas_semana" /></td>
-              <td><input type="number" [(ngModel)]="resultados_aprendizaje_horas_semestre" /></td>
-              <td><input type="text" [(ngModel)]="resultados_aprendizaje_descripcion" /></td>
-              <td><input type="text" [(ngModel)]="resultados_aprendizaje_producto" /></td>
+              <td><input type="number" [(ngModel)]="resultados_aprendizaje_horas_semana" [ngClass]="{'campo-error': camposIncompletos && resultados_aprendizaje_horas_semana <= 0}" /></td>
+              <td><input type="number" [(ngModel)]="resultados_aprendizaje_horas_semestre" [ngClass]="{'campo-error': camposIncompletos && resultados_aprendizaje_horas_semestre <= 0}" /></td>
+              <td><input type="text" [(ngModel)]="resultados_aprendizaje_descripcion" [ngClass]="{'campo-error': camposIncompletos && !resultados_aprendizaje_descripcion}" /></td>
+              <td><input type="text" [(ngModel)]="resultados_aprendizaje_producto" [ngClass]="{'campo-error': camposIncompletos && !resultados_aprendizaje_producto}" /></td>
             </tr>
           </tbody>
         </table>

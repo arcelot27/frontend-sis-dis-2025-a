@@ -1,6 +1,5 @@
 .fondo {
   background-image: url('../../../public/imagen_corhuila.jpg');
- /* Reemplaza con tu imagen */
   background-size: cover;
   background-position: center;
   min-height: 80vh;
@@ -12,7 +11,7 @@
 .overlay {
   width: 100%;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.462);  /* opcional, para opacidad */
+  background-color: rgba(255, 255, 255, 0.462);
   padding: 2rem;
 }
 

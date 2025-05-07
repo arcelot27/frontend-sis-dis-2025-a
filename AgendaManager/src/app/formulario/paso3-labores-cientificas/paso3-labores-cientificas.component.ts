@@ -14,6 +14,7 @@ import { ApiService } from '../../services/api/api.services';
 export class Paso3LaboresCientificasComponent implements OnInit {
 
   id_formulario: number = 3;
+  camposIncompletos: boolean = false;
 
   semilleros_horas_semana = 0;
   semilleros_horas_semestre = 0;
@@ -47,6 +48,12 @@ export class Paso3LaboresCientificasComponent implements OnInit {
   }
 
   guardarLaboresCientificas(): void {
+    this.camposIncompletos = this.camposInvalidos();
+
+    if (this.camposIncompletos) {
+      return;
+    }
+
     const datos = {
       id_formulario: this.id_formulario,
       semilleros_horas_semana: this.semilleros_horas_semana,
@@ -81,12 +88,34 @@ export class Paso3LaboresCientificasComponent implements OnInit {
     });
   }
 
+  camposInvalidos(): boolean {
+    const numeros = [
+      this.semilleros_horas_semana, this.semilleros_horas_semestre,
+      this.propuestas_horas_semana, this.propuestas_horas_semestre,
+      this.proyectos_horas_semana, this.proyectos_horas_semestre,
+      this.grupo_horas_semana, this.grupo_horas_semestre,
+      this.articulos_horas_semana, this.articulos_horas_semestre
+    ];
+
+    const textos = [
+      this.semilleros_descripcion, this.semilleros_producto,
+      this.propuestas_descripcion, this.propuestas_producto,
+      this.proyectos_descripcion, this.proyectos_producto,
+      this.grupo_descripcion, this.grupo_producto,
+      this.articulos_descripcion, this.articulos_producto
+    ];
+
+    const numerosInvalidos = numeros.some(n => !n || n <= 0);
+    const textosVacios = textos.some(t => !t || t.trim() === '');
+
+    return numerosInvalidos || textosVacios;
+  }
+
   volverAPaso2() {
     this.router.navigate(['/labores-academicas']);
   }
 
   irALaboresExtension() {
     this.router.navigate(['/labores-Extension']);
-
   }
 }

@@ -12,8 +12,8 @@ import { ApiService } from '../../services/api/api.services';
   styleUrls: ['./paso4-labores-extension.component.css']
 })
 export class Paso4LaboresExtensionComponent implements OnInit {
-
   id_formulario: number = 4;
+  camposIncompletos: boolean = false;
 
   consultoria_horas_semana = 0;
   consultoria_horas_semestre = 0;
@@ -51,8 +51,37 @@ export class Paso4LaboresExtensionComponent implements OnInit {
     console.log(`[Paso 4] Formulario activo: ${this.id_formulario}`);
   }
 
+  validarCampos(): boolean {
+    const numeros = [
+      this.consultoria_horas_semana, this.consultoria_horas_semestre,
+      this.acompanamiento_horas_semana, this.acompanamiento_horas_semestre,
+      this.intervencion_horas_semana, this.intervencion_horas_semestre,
+      this.proyectos_culturales_horas_semana, this.proyectos_culturales_horas_semestre,
+      this.educacion_artistica_horas_semana, this.educacion_artistica_horas_semestre,
+      this.divulgacion_valores_horas_semana, this.divulgacion_valores_horas_semestre
+    ];
+
+    const textos = [
+      this.consultoria_descripcion, this.consultoria_producto,
+      this.acompanamiento_descripcion, this.acompanamiento_producto,
+      this.intervencion_descripcion, this.intervencion_producto,
+      this.proyectos_culturales_descripcion, this.proyectos_culturales_producto,
+      this.educacion_artistica_descripcion, this.educacion_artistica_producto,
+      this.divulgacion_valores_descripcion, this.divulgacion_valores_producto
+    ];
+
+    return numeros.every(n => n > 0) && textos.every(t => t.trim() !== '');
+  }
+
   guardarLaboresExtension(): void {
-    const datosExtension  = {
+    if (!this.validarCampos()) {
+      this.camposIncompletos = true;
+      return;
+    }
+
+    this.camposIncompletos = false;
+
+    const datosExtension = {
       id_formulario: this.id_formulario,
 
       consultoria_horas_semana: this.consultoria_horas_semana,
@@ -91,10 +120,12 @@ export class Paso4LaboresExtensionComponent implements OnInit {
       error: (error) => console.error('❌ Error al guardar:', error)
     });
   }
-    volverAPaso3() {
-      this.router.navigate(['/labores-cientificas']);
-    }
-    irAGestionAcademica() {
-      this.router.navigate(['/Gestion-Academica']);
-    }
+
+  volverAPaso3() {
+    this.router.navigate(['/labores-cientificas']);
   }
+
+  irAGestionAcademica() {
+    this.router.navigate(['/Gestion-Academica']);
+  }
+}

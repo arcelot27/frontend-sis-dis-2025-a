@@ -112,3 +112,25 @@
   border-radius: 20px;
   cursor: pointer;
 }
+
+input.invalido {
+  border: 2px solid red !important;
+  background-color: #fefefe;
+}
+
+
+.mensaje-error {
+  color: rgb(229, 37, 37);
+  font-size: 0.8rem;
+  margin-top: 4px;
+  text-align: left;
+}
+.alerta-error {
+  background-color: #dc3545;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
