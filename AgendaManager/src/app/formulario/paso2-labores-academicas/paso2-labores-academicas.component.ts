@@ -18,14 +18,12 @@ export class Paso2LaboresAcademicasComponent implements OnInit {
 
   id_formulario: number = 2;
 
-
   nombreAsignatura: string = '';
   programa: string = '';
   grupo: string = '';
   sede: string = '';
   horasSemanales: number = 0;
   horasSemestrales: number = 0;
-
 
   prepHorasSemana: number = 0;
   prepHorasSemestre: number = 0;
@@ -42,7 +40,6 @@ export class Paso2LaboresAcademicasComponent implements OnInit {
   eventosDescripcion: string = '';
   eventosProducto: string = '';
 
-
   acompHorasSemana: number = 0;
   acompHorasSemestre: number = 0;
   acompDescripcion: string = '';
@@ -58,61 +55,91 @@ export class Paso2LaboresAcademicasComponent implements OnInit {
   emprendDescripcion: string = '';
   emprendProducto: string = '';
 
+  camposIncompletos: boolean = false;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private apiService: ApiService
   ) {}
-ngOnInit(): void {
 
-  this.id_formulario = 1;
-  console.log('ID del formulario forzado:', this.id_formulario);
-}
+  ngOnInit(): void {
+    this.id_formulario = 2;
+    console.log('ID del formulario:', this.id_formulario);
+  }
+
+  esCampoInvalido(valor: any): boolean {
+    return valor === null || valor === undefined || valor.toString().trim() === '';
+  }
 
   guardarLaboresAcademicas(): void {
+    const numerosInvalidos = [
+      this.horasSemanales, this.horasSemestrales,
+      this.prepHorasSemana, this.prepHorasSemestre,
+      this.evalHorasSemana, this.evalHorasSemestre,
+      this.eventosHorasSemana, this.eventosHorasSemestre,
+      this.acompHorasSemana, this.acompHorasSemestre,
+      this.cursosHorasSemana, this.cursosHorasSemestre,
+      this.emprendHorasSemana, this.emprendHorasSemestre
+    ].some(num => !num || num <= 0);
+
+    const textosIncompletos = [
+      this.nombreAsignatura, this.programa, this.grupo, this.sede,
+      this.prepDescripcion, this.prepProducto,
+      this.evalDescripcion, this.evalProducto,
+      this.eventosDescripcion, this.eventosProducto,
+      this.acompDescripcion, this.acompProducto,
+      this.cursosDescripcion, this.cursosProducto,
+      this.emprendDescripcion, this.emprendProducto
+    ].some(txt => this.esCampoInvalido(txt));
+
+    this.camposIncompletos = numerosInvalidos || textosIncompletos;
+
+    if (this.camposIncompletos) {
+      return;
+    }
+
     const datosLabores = {
-        id_formulario: this.id_formulario,
-        nombreAsignatura: this.nombreAsignatura,
-        programa: this.programa,
-        grupo: this.grupo,
-        sede: this.sede,
-        horasSemanales: this.horasSemanales,
-        horasSemestrales: this.horasSemestrales,
+      id_formulario: this.id_formulario,
+      nombreAsignatura: this.nombreAsignatura,
+      programa: this.programa,
+      grupo: this.grupo,
+      sede: this.sede,
+      horasSemanales: this.horasSemanales,
+      horasSemestrales: this.horasSemestrales,
 
+      prepHorasSemana: this.prepHorasSemana,
+      prepHorasSemestre: this.prepHorasSemestre,
+      prepDescripcion: this.prepDescripcion,
+      prepProducto: this.prepProducto,
 
-        prepHorasSemana: this.prepHorasSemana,
-        prepHorasSemestre: this.prepHorasSemestre,
-        prepDescripcion: this.prepDescripcion,
-        prepProducto: this.prepProducto,
+      evalHorasSemana: this.evalHorasSemana,
+      evalHorasSemestre: this.evalHorasSemestre,
+      evalDescripcion: this.evalDescripcion,
+      evalProducto: this.evalProducto,
 
-        evalHorasSemana: this.evalHorasSemana,
-        evalHorasSemestre: this.evalHorasSemestre,
-        evalDescripcion: this.evalDescripcion,
-        evalProducto: this.evalProducto,
+      eventosHorasSemana: this.eventosHorasSemana,
+      eventosHorasSemestre: this.eventosHorasSemestre,
+      eventosDescripcion: this.eventosDescripcion,
+      eventosProducto: this.eventosProducto,
 
-        eventosHorasSemana: this.eventosHorasSemana,
-        eventosHorasSemestre: this.eventosHorasSemestre,
-        eventosDescripcion: this.eventosDescripcion,
-        eventosProducto: this.eventosProducto,
+      acompHorasSemana: this.acompHorasSemana,
+      acompHorasSemestre: this.acompHorasSemestre,
+      acompDescripcion: this.acompDescripcion,
+      acompProducto: this.acompProducto,
 
+      cursosHorasSemana: this.cursosHorasSemana,
+      cursosHorasSemestre: this.cursosHorasSemestre,
+      cursosDescripcion: this.cursosDescripcion,
+      cursosProducto: this.cursosProducto,
 
-        acompHorasSemana: this.acompHorasSemana,
-        acompHorasSemestre: this.acompHorasSemestre,
-        acompDescripcion: this.acompDescripcion,
-        acompProducto: this.acompProducto,
+      emprendHorasSemana: this.emprendHorasSemana,
+      emprendHorasSemestre: this.emprendHorasSemestre,
+      emprendDescripcion: this.emprendDescripcion,
+      emprendProducto: this.emprendProducto
+    };
 
-        cursosHorasSemana: this.cursosHorasSemana,
-        cursosHorasSemestre: this.cursosHorasSemestre,
-        cursosDescripcion: this.cursosDescripcion,
-        cursosProducto: this.cursosProducto,
-
-        emprendHorasSemana: this.emprendHorasSemana,
-        emprendHorasSemestre: this.emprendHorasSemestre,
-        emprendDescripcion: this.emprendDescripcion,
-        emprendProducto: this.emprendProducto
-      };
-
-      console.log('➡️ Datos enviados al backend:', datosLabores);
+    console.log('➡️ Datos enviados al backend:', datosLabores);
 
     this.apiService.guardarLaboresAcademicas(datosLabores).subscribe({
       next: (response: any) => {
@@ -133,8 +160,3 @@ ngOnInit(): void {
     this.router.navigate(['/labores-cientificas']);
   }
 }
-
-
-
-
-

@@ -3,88 +3,122 @@
     <div class="contenedor-formulario">
       <div class="formulario">
 
+        <div *ngIf="camposIncompletos" class="alerta-error">
+          Por favor, llena todos los campos correctamente antes de continuar.
+        </div>
+
         <h3>1. LABORES DE DOCENCIA, ACADÉMICAS Y FORMATIVAS</h3>
 
         <h4>1.1 Datos Generales</h4>
         <div class="formulario-grid">
-          <div class="campo">
+          <div class="campo" [ngClass]="{'invalido': camposIncompletos && !nombreAsignatura}">
             <label>Nombre Asignatura:</label>
             <input type="text" [(ngModel)]="nombreAsignatura" name="nombreAsignatura" />
+            <div class="mensaje-error" *ngIf="camposIncompletos && !nombreAsignatura">Campo obligatorio</div>
           </div>
-          <div class="campo">
+          <div class="campo" [ngClass]="{'invalido': camposIncompletos && !programa}">
             <label>Programa:</label>
             <input type="text" [(ngModel)]="programa" name="programa" />
+            <div class="mensaje-error" *ngIf="camposIncompletos && !programa">Campo obligatorio</div>
           </div>
-          <div class="campo">
+          <div class="campo" [ngClass]="{'invalido': camposIncompletos && !grupo}">
             <label>Grupo:</label>
             <input type="text" [(ngModel)]="grupo" name="grupo" />
+            <div class="mensaje-error" *ngIf="camposIncompletos && !grupo">Campo obligatorio</div>
           </div>
-          <div class="campo">
+          <div class="campo" [ngClass]="{'invalido': camposIncompletos && !sede}">
             <label>Sede:</label>
             <input type="text" [(ngModel)]="sede" name="sede" />
+            <div class="mensaje-error" *ngIf="camposIncompletos && !sede">Campo obligatorio</div>
           </div>
-          <div class="campo">
-            <label>Dedicación de horas (SEMANALES):</label>
+          <div class="campo" [ngClass]="{'invalido': camposIncompletos && (!horasSemanales || horasSemanales <= 0)}">
+            <label>Dedicación de horas Semanales:</label>
             <input type="number" [(ngModel)]="horasSemanales" name="horasSemanales" />
+            <div class="mensaje-error" *ngIf="camposIncompletos && (!horasSemanales || horasSemanales <= 0)">Campo obligatorio</div>
           </div>
-          <div class="campo">
-            <label>Dedicación de horas (SEMESTRALES):</label>
+          <div class="campo" [ngClass]="{'invalido': camposIncompletos && (!horasSemestrales || horasSemestrales <= 0)}">
+            <label>Dedicación de horas Semestrales:</label>
             <input type="number" [(ngModel)]="horasSemestrales" name="horasSemestrales" />
+            <div class="mensaje-error" *ngIf="camposIncompletos && (!horasSemestrales || horasSemestrales <= 0)">Campo obligatorio</div>
           </div>
         </div>
 
-        <h4>1.2 Actividades Académicas</h4>
-        <div class="formulario-grid-actividades">
-          <div></div>
-          <div><strong>Horas Semana</strong></div>
-          <div><strong>Horas Semestre</strong></div>
-          <div><strong>Descripción</strong></div>
-          <div><strong>Producto</strong></div>
 
-          <div class="etiqueta-fila">Preparación de clases</div>
-          <input type="number" [(ngModel)]="prepHorasSemana" name="prepHorasSemana"/>
-          <input type="number" [(ngModel)]="prepHorasSemestre" name="prepHorasSemestre"/>
-          <input type="text" [(ngModel)]="prepDescripcion" name="prepDescripcion"/>
-          <input type="text" [(ngModel)]="prepProducto" name="prepProducto"/>
-
-          <div class="etiqueta-fila">Evaluación de aprendizajes</div>
-          <input type="number" [(ngModel)]="evalHorasSemana" name="evalHorasSemana" />
-          <input type="number" [(ngModel)]="evalHorasSemestre" name="evalHorasSemestre"/>
-          <input type="text" [(ngModel)]="evalDescripcion" name="evalDescripcion" />
-          <input type="text" [(ngModel)]="evalProducto"  name="evalProducto"/>
-
-          <div class="etiqueta-fila">Gestión de eventos académicos</div>
-          <input type="number" [(ngModel)]="eventosHorasSemana" name="eventosHorasSemana" />
-          <input type="number" [(ngModel)]="eventosHorasSemestre" name="eventosHorasSemestre" />
-          <input type="text" [(ngModel)]="eventosDescripcion"  name="eventosDescripcion"/>
-          <input type="text" [(ngModel)]="eventosProducto" name="eventosProducto" />
+        <div class="tabla-actividades">
+          <h4>1.2 Actividades Académicas</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>Actividad</th>
+                <th>Horas Semana</th>
+                <th>Horas Semestre</th>
+                <th>Descripción</th>
+                <th>Producto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Preparación de clases</td>
+                <td><input type="number" [(ngModel)]="prepHorasSemana" [ngClass]="{'invalido': camposIncompletos && prepHorasSemana <= 0}" /></td>
+                <td><input type="number" [(ngModel)]="prepHorasSemestre" [ngClass]="{'invalido': camposIncompletos && prepHorasSemestre <= 0}" /></td>
+                <td><input type="text" [(ngModel)]="prepDescripcion" [ngClass]="{'invalido': camposIncompletos && !prepDescripcion}" /></td>
+                <td><input type="text" [(ngModel)]="prepProducto" [ngClass]="{'invalido': camposIncompletos && !prepProducto}" /></td>
+              </tr>
+              <tr>
+                <td>Evaluación de aprendizajes</td>
+                <td><input type="number" [(ngModel)]="evalHorasSemana" [ngClass]="{'invalido': camposIncompletos && evalHorasSemana <= 0}" /></td>
+                <td><input type="number" [(ngModel)]="evalHorasSemestre" [ngClass]="{'invalido': camposIncompletos && evalHorasSemestre <= 0}" /></td>
+                <td><input type="text" [(ngModel)]="evalDescripcion" [ngClass]="{'invalido': camposIncompletos && !evalDescripcion}" /></td>
+                <td><input type="text" [(ngModel)]="evalProducto" [ngClass]="{'invalido': camposIncompletos && !evalProducto}" /></td>
+              </tr>
+              <tr>
+                <td>Gestión de eventos académicos</td>
+                <td><input type="number" [(ngModel)]="eventosHorasSemana" [ngClass]="{'invalido': camposIncompletos && eventosHorasSemana <= 0}" /></td>
+                <td><input type="number" [(ngModel)]="eventosHorasSemestre" [ngClass]="{'invalido': camposIncompletos && eventosHorasSemestre <= 0}" /></td>
+                <td><input type="text" [(ngModel)]="eventosDescripcion" [ngClass]="{'invalido': camposIncompletos && !eventosDescripcion}" /></td>
+                <td><input type="text" [(ngModel)]="eventosProducto" [ngClass]="{'invalido': camposIncompletos && !eventosProducto}" /></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <h4>1.3 Actividades Formativas</h4>
-        <div class="formulario-grid-actividades">
-          <div></div>
-          <div><strong>Horas Semana</strong></div>
-          <div><strong>Horas Semestre</strong></div>
-          <div><strong>Descripción</strong></div>
-          <div><strong>Producto</strong></div>
 
-          <div class="etiqueta-fila">Acompañamiento académico</div>
-          <input type="number" [(ngModel)]="acompHorasSemana" name="acompHorasSemana" />
-          <input type="number" [(ngModel)]="acompHorasSemestre" name="acompHorasSemestre" />
-          <input type="text" [(ngModel)]="acompDescripcion"  name="acompDescripcion"/>
-          <input type="text" [(ngModel)]="acompProducto" name="acompProducto" />
-
-          <div class="etiqueta-fila">Cursos de fortalecimiento</div>
-          <input type="number" [(ngModel)]="cursosHorasSemana" name="cursosHorasSemana" />
-          <input type="number" [(ngModel)]="cursosHorasSemestre" name="cursosHorasSemestre" />
-          <input type="text" [(ngModel)]="cursosDescripcion" name="cursosDescripcion" />
-          <input type="text" [(ngModel)]="cursosProducto" name="cursosProducto" />
-
-          <div class="etiqueta-fila">Asesoría en emprendimiento</div>
-          <input type="number" [(ngModel)]="emprendHorasSemana" name="emprendHorasSemana" />
-          <input type="number" [(ngModel)]="emprendHorasSemestre"  name="emprendHorasSemestre" />
-          <input type="text" [(ngModel)]="emprendDescripcion" name="emprendDescripcion" />
-          <input type="text" [(ngModel)]="emprendProducto"  name="emprendProducto"/>
+        <div class="tabla-actividades">
+          <h4>1.3 Actividades Formativas</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>Actividad</th>
+                <th>Horas Semana</th>
+                <th>Horas Semestre</th>
+                <th>Descripción</th>
+                <th>Producto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Acompañamiento académico</td>
+                <td><input type="number" [(ngModel)]="acompHorasSemana" [ngClass]="{'invalido': camposIncompletos && acompHorasSemana <= 0}" /></td>
+                <td><input type="number" [(ngModel)]="acompHorasSemestre" [ngClass]="{'invalido': camposIncompletos && acompHorasSemestre <= 0}" /></td>
+                <td><input type="text" [(ngModel)]="acompDescripcion" [ngClass]="{'invalido': camposIncompletos && !acompDescripcion}" /></td>
+                <td><input type="text" [(ngModel)]="acompProducto" [ngClass]="{'invalido': camposIncompletos && !acompProducto}" /></td>
+              </tr>
+              <tr>
+                <td>Cursos de fortalecimiento</td>
+                <td><input type="number" [(ngModel)]="cursosHorasSemana" [ngClass]="{'invalido': camposIncompletos && cursosHorasSemana <= 0}" /></td>
+                <td><input type="number" [(ngModel)]="cursosHorasSemestre" [ngClass]="{'invalido': camposIncompletos && cursosHorasSemestre <= 0}" /></td>
+                <td><input type="text" [(ngModel)]="cursosDescripcion" [ngClass]="{'invalido': camposIncompletos && !cursosDescripcion}" /></td>
+                <td><input type="text" [(ngModel)]="cursosProducto" [ngClass]="{'invalido': camposIncompletos && !cursosProducto}" /></td>
+              </tr>
+              <tr>
+                <td>Asesoría en emprendimiento</td>
+                <td><input type="number" [(ngModel)]="emprendHorasSemana" [ngClass]="{'invalido': camposIncompletos && emprendHorasSemana <= 0}" /></td>
+                <td><input type="number" [(ngModel)]="emprendHorasSemestre" [ngClass]="{'invalido': camposIncompletos && emprendHorasSemestre <= 0}" /></td>
+                <td><input type="text" [(ngModel)]="emprendDescripcion" [ngClass]="{'invalido': camposIncompletos && !emprendDescripcion}" /></td>
+                <td><input type="text" [(ngModel)]="emprendProducto" [ngClass]="{'invalido': camposIncompletos && !emprendProducto}" /></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <div class="botones">
