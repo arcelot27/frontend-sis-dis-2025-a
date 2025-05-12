@@ -1,32 +1,45 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
-  imports: [ HttpClientModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  showPassword = false;
 
-    constructor(
-      private router: Router,
-    ) {}
+  correo: string = '';
+  contrasena: string = '';
+  errorLogin: boolean = false;
 
-  togglePassword() {
-    this.showPassword = !this.showPassword;
+  constructor(private http: HttpClient, private router: Router) {}
+
+  iniciarSesion(): void {
+    const datos = {
+      usuario: this.correo,
+      contrasena: this.contrasena
+    };
+
+    this.http.post<any>('http://localhost:8080/api/login', datos).subscribe({
+      next: (respuesta) => {
+        const rol = respuesta.rol;
+
+        if (rol === 'docente') {
+          this.router.navigate(['/dashboard-docente']);
+        } else if (rol === 'jefe') {
+          this.router.navigate(['/dashboard-jefe']);
+        } else if (rol === 'facultad') {
+          this.router.navigate(['/dashboard-facultad']);
+        } else if (rol === 'curriculo') {
+          this.router.navigate(['/dashboard-curriculo']);
+        } else {
+          this.errorLogin = true;
+        }
+      },
+      error: () => {
+        this.errorLogin = true;
+      }
+    });
   }
-  mostrarAvisoCookies = true;
-
-  cerrarAvisoCookies() {
-    this.mostrarAvisoCookies = false;
-  }
-
-
-  Profesor(): void {
-    this.router.navigate(['/dashboard']);
-  }
-
 }
