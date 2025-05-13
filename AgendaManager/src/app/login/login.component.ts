@@ -44,13 +44,19 @@ export class LoginComponent {
 
         switch (response.role) {
           case 'admin':
-            this.router.navigate(['/dashboardFacultad']); // o el dashboard correcto para ese rol
+            this.router.navigate(['/admin']); // o el dashboard correcto para ese rol
             break;
           case 'profesor':
             this.router.navigate(['/dashboard']);
             break;
           case 'jefe_programa':
             this.router.navigate(['/dashboardJefePrograma']);
+            break;
+          case 'facultad':
+            this.router.navigate(['/dashboardFacultad']);
+            break;
+          case 'curriculo':
+            this.router.navigate(['/dashboardCurriculo']);
             break;
           default:
             this.router.navigate(['/']);
