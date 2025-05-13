@@ -2,29 +2,18 @@
   <div class="formulario-login">
     <h2>Iniciar Sesión</h2>
 
-    <!-- Mensaje de error si login falla -->
     <div *ngIf="errorLogin" class="mensaje-error">
-      Correo o contraseña incorrectos
+      Correo o contraseña incorrectos o campos vacíos.
     </div>
 
     <div class="campo">
       <label for="correo">Correo:</label>
-      <input
-        type="email"
-        id="correo"
-        [(ngModel)]="correo"
-        placeholder="Ej: usuario@correo.com"
-      />
+      <input type="email" id="correo" [(ngModel)]="correo" required />
     </div>
 
     <div class="campo">
       <label for="contrasena">Contraseña:</label>
-      <input
-        type="password"
-        id="contrasena"
-        [(ngModel)]="contrasena"
-        placeholder="********"
-      />
+      <input type="password" id="contrasena" [(ngModel)]="contrasena" required />
     </div>
 
     <div class="botones">

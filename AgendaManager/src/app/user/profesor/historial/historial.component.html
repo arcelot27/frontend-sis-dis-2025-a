@@ -1,25 +1,29 @@
-<div class="container my-5">
-    <h2 class="text-center mb-4">Historial de formularios</h2>
-  
-    <div class="table-responsive">
-        <table class="table table-striped table-bordered align-middle">
-            <thead class="table-dark" >
-                <tr>
-                    <th>Fecha</th>
-                    <th>Acción</th>
-                    <th>Usuario</th>
-                    <th>Descripción</th>
-                    <th>Acciones</th> 
-                </tr>
-            </thead>
-            <tbody>   
-                
-            </tbody>
-        </table>
-    </div>
-  
+<div class="container mt-4">
+  <h2>Historial de Formularios</h2>
+  <table class="table table-bordered table-hover mt-3">
+    <thead class="table-dark">
+      <tr>
+        <th>Fecha</th>
+        <th>Acción</th>
+        <th>Usuario</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of historial">
+        <td>{{ item.fecha | date: 'short' }}</td>
+        <td>{{ item.accion }}</td>
+        <td>{{ item.usuario }}</td>
+        <td>{{ item.descripcion }}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="descargar(item.id)">
+            Descargar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-    <div class="text-center mt-4">
-      <button (click)="DevolverDashboard()" class="btn btn-secondary" id="button">Volver</button>
-    </div>
-  </div>
+  <button class="btn btn-secondary mt-3" (click)="DevolverDashboard()">Volver</button>
+</div>
