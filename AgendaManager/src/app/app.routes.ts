@@ -63,7 +63,16 @@ export const routes: Routes = [
     loadComponent: () => import('./user/profesor/formularios-devueltos/formularios-devueltos.component').then(m => m.FormulariosDevueltosComponent),
     canActivate: [AuthGuard],
     title: 'FormularioDevuelto-profesor'
+
   },
+
+  //{
+  //path: 'dashboardAdmin',
+  //loadComponent: () => import('./user/admin/dashboard/dashboard.component').then(m => m.DashboardComponent),
+  //canActivate: [AuthGuard],
+  //title: 'DashboardAdmin'
+//}
+
 
   // Jefe de Programa
   {

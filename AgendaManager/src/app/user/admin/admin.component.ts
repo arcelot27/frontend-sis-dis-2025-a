@@ -5,11 +5,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-dashboard-curriculo',
+  selector: 'app-dashboard-admin',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.css']
 })
 export class DashboardComponent implements OnInit {
 
@@ -68,7 +68,5 @@ export class DashboardComponent implements OnInit {
     this.mostrarContrasena = !this.mostrarContrasena;
   }
 
-  irARevisionCurriculo(): void {
-    this.router.navigate(['/formulario-aprobar-curriculo']);
-  }
+  // Puedes agregar funciones de navegación si el admin tiene vistas específicas
 }

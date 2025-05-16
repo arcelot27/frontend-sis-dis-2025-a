@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -13,59 +12,57 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
   correo: string = '';
   contrasena: string = '';
   errorLogin: boolean = false;
 
-  private apiUrl = 'http://localhost:8080/api/login';
-
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-    private authService: AuthService
-  ) { }
+  constructor(private http: HttpClient, private router: Router) {}
 
   iniciarSesion(): void {
-    this.errorLogin = false;
-
-    if (!this.correo.trim() || !this.contrasena.trim()) {
+    if (!this.correo || !this.contrasena) {
       this.errorLogin = true;
       return;
     }
 
-    const body = {
+    const datosLogin = {
       correo: this.correo,
       contrasena: this.contrasena
     };
 
-    this.http.post<any>('http://localhost:8080/api/login', body).subscribe({
-      next: (response) => {
-        this.authService.login(this.correo, response.role);
+    this.http.post<any>('http://localhost:8080/api/usuarios/login', datosLogin).subscribe({
+  next: (response) => {
+    console.log('Login exitoso:', response);
 
-        switch (response.role) {
-          case 'admin':
-            this.router.navigate(['/admin']); // o el dashboard correcto para ese rol
-            break;
-          case 'profesor':
-            this.router.navigate(['/dashboard']);
-            break;
-          case 'jefe_programa':
-            this.router.navigate(['/dashboardJefePrograma']);
-            break;
-          case 'facultad':
-            this.router.navigate(['/dashboardFacultad']);
-            break;
-          case 'curriculo':
-            this.router.navigate(['/dashboardCurriculo']);
-            break;
-          default:
-            this.router.navigate(['/']);
-        }
-      },
-      error: () => {
-        this.errorLogin = true;
-      }
-    });
+    localStorage.setItem('correo', response.correo);
+    localStorage.setItem('rol', response.rol);
+    localStorage.setItem('nombre', response.nombre);
+    localStorage.setItem('id', response.id);
+
+    switch (response.rol) {
+      case 'profesor':
+        this.router.navigate(['/dashboard']);
+        break;
+      case 'jefe':
+        this.router.navigate(['/dashboardJefePrograma']);
+        break;
+      case 'facultad':
+        this.router.navigate(['/dashboardFacultad']);
+        break;
+      case 'curriculo':
+        this.router.navigate(['/dashboardCurriculo']);
+        break;
+      case 'admin':
+        this.router.navigate(['/dashboardAdmin']);
+        break;
+      default:
+        alert('Rol no reconocido');
+    }
+  },
+  error: (error) => {
+    console.error('Error en login:', error);
+    this.errorLogin = true;
+    }
+});
   }
-
 }
