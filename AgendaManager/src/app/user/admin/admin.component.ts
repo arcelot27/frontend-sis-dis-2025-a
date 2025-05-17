@@ -43,26 +43,29 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  editar(): void {
-    this.inputsDeshabilitados = !this.inputsDeshabilitados;
+ editar(): void {
+  this.inputsDeshabilitados = !this.inputsDeshabilitados;
 
-    if (this.inputsDeshabilitados) {
-      const datos = {
-        nombre: this.usuario.nombre,
-        contrasena: this.usuario.contrasena
-      };
+  if (this.inputsDeshabilitados) {
+    console.log('Intentando actualizar:', this.usuario);
 
-      this.http.put(`http://localhost:8080/api/usuarios/${this.usuario.id}`, datos).subscribe({
-        next: () => {
-          alert('¡Datos actualizados correctamente!');
-        },
-        error: (error) => {
-          console.error('Error al actualizar usuario', error);
-          alert('Error al guardar los cambios.');
-        }
-      });
-    }
+    const datos = {
+      nombre: this.usuario.nombre,
+      contrasena: this.usuario.contrasena
+    };
+
+    this.http.put(`http://localhost:8080/api/usuarios/${this.usuario.id}`, datos).subscribe({
+      next: () => {
+        alert('¡Datos actualizados correctamente!');
+      },
+      error: (error) => {
+        console.error('Error al actualizar usuario', error);
+        alert('Error al guardar los cambios.');
+      }
+    });
   }
+}
+
 
   toggleMostrarContrasena(): void {
     this.mostrarContrasena = !this.mostrarContrasena;

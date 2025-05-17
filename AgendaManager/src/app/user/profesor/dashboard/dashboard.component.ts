@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,HttpClientModule],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
-    const correo = localStorage.getItem('correo');
+    const correo = typeof window !== 'undefined' ? localStorage.getItem('correo') : null;
 
     if (correo) {
       this.http.get<any>(`http://localhost:8080/api/usuarios/perfil/${correo}`).subscribe({
@@ -44,29 +44,31 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  toggleMostrarContrasena(): void {
+    this.mostrarContrasena = !this.mostrarContrasena;
+  }
+
   editar(): void {
     this.inputsDeshabilitados = !this.inputsDeshabilitados;
 
     if (this.inputsDeshabilitados) {
-      const datosActualizados = {
+      console.log('Intentando actualizar:', this.usuario);
+
+      const datos = {
         nombre: this.usuario.nombre,
         contrasena: this.usuario.contrasena
       };
 
-      this.http.put(`http://localhost:8080/api/usuarios/${this.usuario.id}`, datosActualizados).subscribe({
+      this.http.put(`http://localhost:8080/api/usuarios/${this.usuario.id}`, datos).subscribe({
         next: () => {
-          alert('¡Datos actualizados!');
+          alert('¡Datos actualizados correctamente!');
         },
         error: (error) => {
-          console.error('Error al actualizar usuario:', error);
+          console.error('Error al actualizar usuario', error);
           alert('Error al guardar los cambios.');
         }
       });
     }
-  }
-
-  toggleMostrarContrasena(): void {
-    this.mostrarContrasena = !this.mostrarContrasena;
   }
 
   comenzarFormulario(): void {
