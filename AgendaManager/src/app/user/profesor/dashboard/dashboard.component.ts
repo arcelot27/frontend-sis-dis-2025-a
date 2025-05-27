@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule,HttpClientModule],
+  imports: [CommonModule, FormsModule, HttpClientModule],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
   mostrarContrasena: boolean = false;
   inputsDeshabilitados: boolean = true;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
     const correo = typeof window !== 'undefined' ? localStorage.getItem('correo') : null;
@@ -32,8 +32,14 @@ export class DashboardComponent implements OnInit {
     if (correo) {
       this.http.get<any>(`http://localhost:8080/api/usuarios/perfil/${correo}`).subscribe({
         next: (data) => {
-          this.usuario = data;
-          console.log('Perfil cargado:', this.usuario);
+          this.usuario = {
+            id: data.idUsuario, 
+            nombre: data.nombre,
+            correo: data.correo,
+            contrasena: data.contrasena,
+            rol: data.rol
+          };
+          console.log('Perfil cargado con ID:', this.usuario);
         },
         error: (err) => {
           console.error('Error al cargar el perfil:', err);
@@ -43,6 +49,7 @@ export class DashboardComponent implements OnInit {
       console.warn('No se encontró el correo en localStorage.');
     }
   }
+
 
   toggleMostrarContrasena(): void {
     this.mostrarContrasena = !this.mostrarContrasena;

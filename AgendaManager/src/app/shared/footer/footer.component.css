@@ -1,52 +1,75 @@
 footer {
-    font-size: 0.9rem;
-    background-color: #3f9c9c;
-  }
-  
-  footer a {
-    text-decoration: none;
-  }
-  
-  footer a:hover {
-    text-decoration: underline;
-    color: #ccc;
-  }
-  h5 {
-    justify-content: center;
-    padding-left: 30%;
-
-  }
-.container {
-    padding-left: 2.5rem ;
-  }
-.container > div:first-child {
-  margin-left: 20rem;
-}
-.container > div:first-child >div:last-child {
-  margin-left: -10rem;
-  padding-left: 5rem;
-  border-left: 1px solid #ccc;  
+  font-size: 0.9rem;
+  background-color: #3f9c9c;
 }
 
-
-#info{
-  margin-left: 1rem;
-  width: 50%; 
-  margin-top: -10px;
+footer a {
+  text-decoration: none;
 }
 
-.container > div:last-child {
-  margin-top: 1rem;
-  border-radius: 10px  ;
-  padding: .5rem 1rem;
+footer a:hover {
+  text-decoration: underline;
+  color: #ccc;
+}
+
+footer h5 {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.info {
+  margin-left: 0.5rem;
+  margin-top: -5px;
+  display: block;
+}
+
+.border-start {
+  border-left: 1px solid #ccc !important;
+}
+
+.enlaces {
   color: black;
-  background-color: #95d4b5;
 }
-.container > div:last-child > div:first-child a {
-  margin-left: 5rem;
-  margin-right: 5rem;
-  margin-top: .5rem;
+
+.bg-light.text-dark {
+  background-color: #95d4b5 !important;
 }
-#enlaces {
-  color: black;
+
+/* Responsividad */
+@media (max-width: 576px) {
+  footer h5 {
+    font-size: 1.2rem;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .border-start {
+    border-left: none !important;
+    border-top: 1px solid #ccc !important;
+    padding-top: 1rem;
+  }
+
+  .info {
+    width: 100%;
+    margin-left: 0;
+    font-size: 0.85rem;
+  }
+
+  .enlaces {
+    font-size: 0.85rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  footer h5 {
+    font-size: 2rem;
+  }
+
+  .info {
+    font-size: 1.1rem;
+  }
+
+  .enlaces {
+    font-size: 1.1rem;
+  }
 }

@@ -7,4 +7,8 @@ export class FormularioDTO {
   fecha: string = '';
   periodo: string = '';
 
+ 
+  idUsuario!: number;
 }
+
+

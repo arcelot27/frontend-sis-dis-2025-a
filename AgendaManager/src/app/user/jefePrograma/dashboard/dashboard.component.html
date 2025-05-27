@@ -1,54 +1,49 @@
 <div class="container py-5">
-    <div class="row">
+  <div class="row">
+    <!-- Perfil -->
+    <div class="col-lg-4">
+      <h5 class="fw-bold">Perfil</h5>
+      <form *ngIf="usuario" #formulario="ngForm">
+        <div class="mb-3">
+          <label for="role" class="form-label">Rol</label>
+          <input type="text" id="role" class="form-control" [(ngModel)]="usuario.rol" name="rol" disabled>
+        </div>
 
-      <div class="col-md-4 ">
-        <h5 class="fw-bold">Perfil</h5>
-        <form *ngIf="usuario" #formulario="ngForm">
-          <div class="mb-3">
-            <label for="role" class="form-label">Rol</label>
-            <input type="text" id="role" class="form-control" [(ngModel)]="usuario.rol" name="rol" [value]="usuario.rol" disabled>
+        <div class="mb-3">
+          <label for="name" class="form-label">Nombre</label>
+          <input type="text" id="name" class="form-control" [(ngModel)]="usuario.nombre" name="nombre" [disabled]="inputsDeshabilitados">
+        </div>
 
+        <div class="mb-3">
+          <label for="email" class="form-label">Correo electrónico</label>
+          <input type="email" id="email" class="form-control" [value]="usuario.correo" name="correo" [attr.disabled]="inputsDeshabilitados">
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <div class="input-group">
+            <input [type]="mostrarContrasena ? 'text' : 'password'" id="password" class="form-control" [(ngModel)]="usuario.contrasena" name="contrasena" [disabled]="inputsDeshabilitados">
+            <button type="button" class="btn btn-outline-secondary" (click)="toggleMostrarContrasena()" [disabled]="inputsDeshabilitados">
+              {{ mostrarContrasena ? '🙈' : '👁' }}
+            </button>
           </div>
-          <div class="mb-3">
-            <label for="name" class="form-label">Nombre</label>
-            <input type="text" id="name" class="form-control" [(ngModel)]="usuario.nombre" name="nombre" [disabled]="inputsDeshabilitados ">
+        </div>
 
-
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Correo electrónico</label>
-            <input type="email" id="email" class="form-control" [value]="usuario.correo" name="correo" [attr.disabled]="inputsDeshabilitados ">
-
-
-
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Contraseña</label>
-            <div class="input-group">
-              <input [type]="mostrarContrasena ? 'text' : 'password'" id="password" class="form-control" [(ngModel)]="usuario.contrasena" name="contrasena" [disabled]="inputsDeshabilitados ">
-              <button type="button" class="btn btn-outline-secondary" (click)="toggleMostrarContrasena()" [disabled]="inputsDeshabilitados">
-                {{ mostrarContrasena ? '🙈' : '👁' }}
-              </button>
-            </div>
-          </div>
-          <button type="button" class="btn btn-primary w-100" (click)="editar()">
-            {{ inputsDeshabilitados ? 'Editar' : 'Guardar'}}
-          </button>
-        </form>
-      </div>
-
-
-      <div class="col-md-6 text-center" style="margin-top: 8rem;">
-      <button class="btn btn-outline-success me-2" (click)="irAFormulariosAprobar()">Aprobar formularios</button>
+        <button type="button" class="btn btn-primary w-100" (click)="editar()">
+          {{ inputsDeshabilitados ? 'Editar' : 'Guardar' }}
+        </button>
+      </form>
     </div>
 
-      <div class="col-md-3 text-center">
-        <img src="LOGO.jpg" alt="Logo CORHUILA" class="img-fluid mb-3" style="max-height: 250px;" style="margin-top: 5rem;">
+    <!-- Botones y logo -->
+    <div class="col-lg-8 mt-5 d-flex flex-column flex-md-row justify-content-center align-items-center gap-4">
+      <div class="text-center">
+        <button class="btn btn-outline-success me-md-3 mb-2 mb-md-0" (click)="irAFormulariosAprobar()">Aprobar formularios</button>
+        <button class="btn btn-outline-warning" (click)="irAFormulariosProfesor()">Formulario devueltos</button>
+      </div>
+      <div>
+        <img src="LOGO.jpg" alt="Logo CORHUILA" class="img-fluid" style="max-height: 180px;">
       </div>
     </div>
   </div>
-
-
-
-
-
+</div>

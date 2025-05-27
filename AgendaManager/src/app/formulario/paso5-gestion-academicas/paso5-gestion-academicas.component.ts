@@ -13,7 +13,7 @@ import { ApiService } from '../../services/api/api.services';
 })
 export class Paso5GestionAcademicaComponent {
 
-  id_formulario: number = 5;
+  id_formulario: number = 0;
   camposIncompletos: boolean = false;
 
   jurado_horas_semana = 0;
@@ -72,6 +72,15 @@ export class Paso5GestionAcademicaComponent {
   resultados_aprendizaje_producto = '';
 
   constructor(private router: Router, private apiService: ApiService) {}
+    
+  ngOnInit(): void {
+    const id = localStorage.getItem('id_formulario');
+    if (id) {
+      this.id_formulario = Number(id);
+    } else {
+      console.error('ID de formulario no encontrado.');
+    }
+  }
 
   guardarGestionAcademica(): void {
     const camposNumericos = [

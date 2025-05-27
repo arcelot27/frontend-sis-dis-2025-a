@@ -24,18 +24,19 @@ export class ApiService {
     return this.http.get<UsuarioDTO>('http://localhost:8080/api/usuarios/perfil');
   }
 
-  private formularioapiUrl = 'http://localhost:8080/AgendaManager/api/formulario';
+  private formularioapiUrl = 'http://localhost:8080/api/formulario';
 
   crearFormulario(formulario: any): Observable<any> {
     const url = 'http://localhost:8080/api/formulario';
     return this.http.post<any>(url, formulario);
   }
-  private laboresAcademicasapiUrl = 'http://localhost:8080/AgendaManager/api/labores-academicas';
+  private laboresAcademicasapiUrl = 'http://localhost:8080/api/labores-academicas';
   guardarLaboresAcademicas(datosLabores: any): Observable<any> {
     const url = 'http://localhost:8080/api/labores-academicas';
     return this.http.post<any>(url, datosLabores);
   }
 
+  private laboresCientificaspiUrl = 'http://localhost:8080/api/labores-cientificas';
   guardarLaboresCientificas(datos: any): Observable<any> {
     return this.http.post('http://localhost:8080/api/labores-cientificas', datos, {
       responseType: 'text'
@@ -48,7 +49,7 @@ export class ApiService {
     });
   }
   guardarGestionAcademica(datosGestion: any): Observable<any> {
-    return this.http.post('http://localhost:8080/api/gestion-academica', datosGestion, {
+    return this.http.post('http://localhost:8080/api/labores-gestion-academica', datosGestion, {
       responseType: 'text'
     });
   }

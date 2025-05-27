@@ -27,12 +27,19 @@ export class DashboardComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
-    const correo = localStorage.getItem('correo');
+    const correo = typeof window !== 'undefined' ? localStorage.getItem('correo') : null;
 
     if (correo) {
       this.http.get<any>(`http://localhost:8080/api/usuarios/perfil/${correo}`).subscribe({
         next: (data) => {
-          this.usuario = data;
+          this.usuario = {
+            id: data.idUsuario, 
+            nombre: data.nombre,
+            correo: data.correo,
+            contrasena: data.contrasena,
+            rol: data.rol
+          };
+          console.log('Perfil cargado con ID:', this.usuario);
         },
         error: (err) => {
           console.error('Error al cargar el perfil:', err);

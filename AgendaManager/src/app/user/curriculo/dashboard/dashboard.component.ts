@@ -32,8 +32,14 @@ export class DashboardComponent implements OnInit {
     if (correo) {
       this.http.get<any>(`http://localhost:8080/api/usuarios/perfil/${correo}`).subscribe({
         next: (data) => {
-          this.usuario = data;
-          console.log('Perfil cargado:', this.usuario);
+          this.usuario = {
+            id: data.idUsuario, 
+            nombre: data.nombre,
+            correo: data.correo,
+            contrasena: data.contrasena,
+            rol: data.rol
+          };
+          console.log('Perfil cargado con ID:', this.usuario);
         },
         error: (err) => {
           console.error('Error al cargar el perfil:', err);

@@ -1,25 +1,38 @@
-<div class="container my-5">
-    <h2 class="text-center mb-4">Formularios Devueltos</h2>
-    
-    <div class="table-responsive">
-      <table class="table table-striped table-bordered align-middle">
+<main>
+  <div class="container my-4">
+    <h3 class="mb-3">
+      <i class="bi bi-x-circle-fill"></i> Formularios Devueltos
+    </h3>
+
+    <div *ngIf="formularios.length === 0" class="alert alert-info">
+      No hay formularios devueltos.
+    </div>
+
+    <div class="table-responsive" *ngIf="formularios.length > 0">
+      <table class="table table-bordered table-hover text-center align-middle">
         <thead class="table-dark">
           <tr>
-            <th>ID</th>
-            <th>Fecha</th>
-            <th>Formulario</th>
-            <th>Usuario</th>
-            <th>Motivo</th>
-            <th>Acciones</th>
+            <th scope="col">#</th>
+            <th scope="col">Motivo de Devolución</th>
+            <th scope="col">Revisado por</th>
+            <th scope="col">Fecha de Devolución</th>
+            <th scope="col">Descargar</th>
           </tr>
         </thead>
         <tbody>
-
+          <tr *ngFor="let f of formularios; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td class="text-break">{{ f.motivoDenegacion || '---' }}</td>
+            <td>{{ f.nombreRevisor || '---' }}</td>
+            <td>{{ f.fechaRevision | date: 'short' }}</td>
+            <td>
+              <button class="btn btn-info btn-sm" (click)="descargarFormulario(f.idFormulario)">
+                Descargar
+              </button>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
-  
-    <div class="text-center mt-4">
-      <button  class="btn btn-secondary" id="button" (click)="DevolverDashboard()">Volver</button>
-    </div>
   </div>
+</main>

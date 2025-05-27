@@ -13,8 +13,8 @@ import { ApiService } from '../../services/api/api.services';
 })
 export class Paso3LaboresCientificasComponent implements OnInit {
 
-  id_formulario: number = 3;
-  camposIncompletos: boolean = false;
+  id_formulario: number = 0;
+
 
   semilleros_horas_semana = 0;
   semilleros_horas_semestre = 0;
@@ -41,11 +41,19 @@ export class Paso3LaboresCientificasComponent implements OnInit {
   articulos_descripcion = '';
   articulos_producto = '';
 
-  constructor(private router: Router, private apiService: ApiService) {}
+  camposIncompletos: boolean = false;
+
+  constructor(private router: Router, private apiService: ApiService) { }
 
   ngOnInit(): void {
-    console.log('Formulario activo:', this.id_formulario);
+    const id = localStorage.getItem('id_formulario');
+    if (id) {
+      this.id_formulario = Number(id);
+    } else {
+      console.error('ID de formulario no encontrado.');
+    }
   }
+
 
   guardarLaboresCientificas(): void {
     this.camposIncompletos = this.camposInvalidos();

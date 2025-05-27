@@ -1,17 +1,202 @@
+/* ESTRUCTURA BASE */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+main {
+  flex: 1;
+}
+
+/* CONTENEDOR PRINCIPAL */
 .container {
-    margin-top: 2rem;
+  margin-top: 2rem;
+  padding: 0 1.5rem;
+  max-width: 1400px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* TABLAS */
+table th,
+table td {
+  text-align: center;
+  vertical-align: middle;
+  word-break: break-word;
+}
+
+table {
+  width: 100%;
+}
+
+/* ENCABEZADOS */
+h3, h5 {
+  color: #343a40;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* BOTONES */
+button {
+  background-color: #3f9c9c;
+  color: white;
+  border: none;
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #337f7f;
+}
+
+/* FOOTER */
+footer {
+  font-size: 0.9rem;
+  background-color: #3f9c9c;
+  color: white;
+  margin-top: 2rem;
+}
+
+footer a {
+  text-decoration: none;
+  color: black;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: #ccc;
+}
+
+footer h5 {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.info {
+  margin-left: 0.5rem;
+  margin-top: -5px;
+  display: block;
+}
+
+.border-start {
+  border-left: 1px solid #ccc !important;
+}
+
+.enlaces {
+  color: black;
+}
+
+.bg-light.text-dark {
+  background-color: #95d4b5 !important;
+}
+
+/* RESPONSIVIDAD */
+
+/* Smartphones pequeños (320px - 480px) */
+@media (max-width: 480px) {
+  h3, h5 {
+    font-size: 1.2rem;
   }
-  
+
   table th,
   table td {
-    text-align: center;
-    vertical-align: middle;
+    font-size: 0.7rem;
+    padding: 0.3rem;
   }
-  
-  h2 {
-    color: #343a40;
-    font-weight: 700;
+
+  button {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
   }
-  #button{
-    background-color: #3f9c9c;
+
+  .info, .enlaces {
+    font-size: 0.8rem;
   }
+
+  .border-start {
+    border-left: none !important;
+    border-top: 1px solid #ccc !important;
+    padding-top: 1rem;
+  }
+}
+
+/* Smartphones grandes y tablets pequeñas (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  h3, h5 {
+    font-size: 1.3rem;
+  }
+
+  table th,
+  table td {
+    font-size: 0.8rem;
+  }
+
+  button {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.8rem;
+  }
+}
+
+/* Tablets (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  h3, h5 {
+    font-size: 1.5rem;
+  }
+
+  table th,
+  table td {
+    font-size: 0.9rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+  }
+}
+
+/* Laptops (1024px - 1439px) */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  h3, h5 {
+    font-size: 1.7rem;
+  }
+}
+
+/* Escritorio Full HD (1440px - 1919px) */
+@media (min-width: 1440px) and (max-width: 1919px) {
+  h3, h5 {
+    font-size: 1.9rem;
+  }
+
+  button {
+    font-size: 1.05rem;
+  }
+}
+
+/* Pantalla 4K (1920px y más) */
+@media (min-width: 1920px) {
+  h3, h5 {
+    font-size: 2.1rem;
+  }
+
+  table th,
+  table td {
+    font-size: 1.05rem;
+  }
+
+  button {
+    font-size: 1.1rem;
+    padding: 0.5rem 1.2rem;
+  }
+
+  .info, .enlaces {
+    font-size: 1.1rem;
+  }
+}

@@ -12,7 +12,7 @@ import { ApiService } from '../../services/api/api.services';
   styleUrls: ['./paso4-labores-extension.component.css']
 })
 export class Paso4LaboresExtensionComponent implements OnInit {
-  id_formulario: number = 4;
+  id_formulario: number = 0;
   camposIncompletos: boolean = false;
 
   consultoria_horas_semana = 0;
@@ -48,7 +48,12 @@ export class Paso4LaboresExtensionComponent implements OnInit {
   constructor(private router: Router, private apiService: ApiService) {}
 
   ngOnInit(): void {
-    console.log(`[Paso 4] Formulario activo: ${this.id_formulario}`);
+    const id = localStorage.getItem('id_formulario');
+    if (id) {
+      this.id_formulario = Number(id);
+    } else {
+      console.error('ID de formulario no encontrado.');
+    }
   }
 
   validarCampos(): boolean {
