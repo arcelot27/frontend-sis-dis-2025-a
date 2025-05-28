@@ -1,11 +1,15 @@
 <!-- Solo se muestran si no estás en /login -->
 <app-header *ngIf="mostrarHeaderFooter()"></app-header>
 
-<main *ngIf="mostrarHeaderFooter()" class="container">
-  <router-outlet></router-outlet>
+<main *ngIf="mostrarHeaderFooter()" class="main-container">
+  <div class="container my-4">
+    <router-outlet></router-outlet>
+  </div>
 </main>
-<div class="login" *ngIf="mostrarLogin()" >
-  <router-outlet ></router-outlet>
+
+<!-- Login especial -->
+<div class="login" *ngIf="mostrarLogin()">
+  <router-outlet></router-outlet>
 </div>
 
 <app-footer *ngIf="mostrarHeaderFooter()"></app-footer>

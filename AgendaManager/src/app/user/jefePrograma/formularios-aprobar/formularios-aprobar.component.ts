@@ -1,27 +1,129 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { HistorialService } from '../../../services/api/historial.service';
+import { API_SERVER } from '../../../services/api/config-api';
 
 @Component({
   selector: 'app-formularios-aprobar',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './formularios-aprobar.component.html',
-  styleUrl: './formularios-aprobar.component.css'
+  styleUrls: ['./formularios-aprobar.component.css']
 })
-export class FormulariosAprobarComponent {
+export class FormulariosAprobarComponent implements OnInit {
 
+  formularios: any[] = [];
+  usuario: any = {};
+  revisores: Record<number, string> = {}; // ✅ Agregado
 
-  formularios = [
-    { nombre: 'Formulario 1', fecha: new Date(), estado: 'Pendiente' },
-    { nombre: 'Formulario 2', fecha: new Date(), estado: 'Aprobado' },
-    { nombre: 'Formulario 3', fecha: new Date(), estado: 'Pendiente' },
-  ];
+  constructor(
+    private http: HttpClient,
+    private historialService: HistorialService
+  ) {}
 
-  verDetalles(formulario: any) {
-    // Aquí puedes redirigir, abrir modal o mostrar detalles
-    alert(`Detalles del formulario: ${formulario.nombre}`);
+  ngOnInit(): void {
+    this.obtenerPerfil();
   }
 
-  aprobarFormulario(formulario: any) {
-    formulario.estado = 'Aprobado';
-    // Aquí podrías hacer una petición HTTP para actualizar el backend
+  obtenerPerfil(): void {
+    const correo = localStorage.getItem('correo');
+    if (!correo) {
+      console.error('❌ No hay sesión activa. El correo no está en localStorage.');
+      return;
+    }
+
+    this.http.get<any>(`${API_SERVER}/usuarios/perfil/${correo}`).subscribe({
+      next: (data) => {
+        this.usuario = {
+          ...data,
+          id: data.idUsuario
+        };
+        console.log('✅ Usuario autenticado:', this.usuario);
+        this.cargarFormularios();
+      },
+      error: (err) => {
+        console.error('❌ Error al cargar perfil de usuario:', err);
+      }
+    });
+  }
+
+  cargarFormularios(): void {
+    this.http.get<any[]>(`${API_SERVER}/historial`).subscribe({
+      next: (data) => {
+        this.formularios = data.filter(f => f.idFormulario && f.idUsuario);
+        console.log('📤 Formularios listos para mostrar:', this.formularios);
+
+        const revisoresUnicos = [...new Set(this.formularios
+          .map(f => f.revisadoPor)
+          .filter(id => !!id))];
+
+        revisoresUnicos.forEach(id => {
+          this.http.get<any>(`${API_SERVER}/usuarios/${id}`).subscribe({
+            next: res => {
+              this.revisores[id] = res.nombre;
+            },
+            error: err => {
+              console.error(`❌ Error al obtener nombre del revisor con ID ${id}`, err);
+            }
+          });
+        });
+      },
+      error: (err) => {
+        console.error('❌ Error al obtener formularios:', err);
+      }
+    });
+  }
+
+  aprobarFormulario(idFormulario: number): void {
+    if (!this.usuario?.id) {
+      console.error('⚠️ Usuario no válido.');
+      return;
+    }
+
+    this.historialService.aprobarFormulario(idFormulario, this.usuario.id).subscribe({
+      next: () => {
+        alert('✅ Formulario aprobado');
+        this.cargarFormularios();
+      },
+      error: (err) => console.error(err)
+    });
+  }
+
+  denegarFormulario(idFormulario: number): void {
+    const motivo = prompt('Ingrese el motivo de la denegación:');
+    if (!motivo?.trim()) {
+      alert('⚠️ Debe ingresar un motivo válido.');
+      return;
+    }
+
+    if (!this.usuario?.id) {
+      console.error('⚠️ Usuario no válido.');
+      return;
+    }
+
+    this.historialService.denegarFormulario(idFormulario, this.usuario.id, motivo).subscribe({
+      next: () => {
+        alert('⚠️ Formulario denegado');
+        this.cargarFormularios();
+      },
+      error: (err) => console.error(err)
+    });
+  }
+
+  descargarFormulario(idFormulario: number): void {
+    this.historialService.descargarFormularioExcel(idFormulario).subscribe({
+      next: (blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `formulario-${idFormulario}.xlsx`;
+        a.click();
+        window.URL.revokeObjectURL(url);
+      },
+      error: (err) => {
+        console.error('Error al descargar el formulario:', err);
+      }
+    });
   }
 }

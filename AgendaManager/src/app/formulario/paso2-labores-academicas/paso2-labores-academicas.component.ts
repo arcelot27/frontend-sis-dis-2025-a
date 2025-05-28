@@ -16,7 +16,7 @@ import { ApiService } from '../../services/api/api.services';
 })
 export class Paso2LaboresAcademicasComponent implements OnInit {
 
-  id_formulario: number = 2;
+  id_formulario: number = 0;
 
   nombreAsignatura: string = '';
   programa: string = '';
@@ -61,12 +61,17 @@ export class Paso2LaboresAcademicasComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private apiService: ApiService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    this.id_formulario = 2;
-    console.log('ID del formulario:', this.id_formulario);
+    const id = localStorage.getItem('id_formulario');
+    if (id) {
+      this.id_formulario = Number(id);
+    } else {
+      console.error("ID de formulario no encontrado.");
+    }
   }
+
 
   esCampoInvalido(valor: any): boolean {
     return valor === null || valor === undefined || valor.toString().trim() === '';

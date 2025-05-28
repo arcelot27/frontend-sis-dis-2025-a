@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { API_SERVER } from '../../../services/api/config-api';
 
 @Component({
   selector: 'app-dashboard-curriculo',
@@ -30,10 +31,16 @@ export class DashboardComponent implements OnInit {
     const correo = typeof window !== 'undefined' ? localStorage.getItem('correo') : null;
 
     if (correo) {
-      this.http.get<any>(`http://localhost:8080/api/usuarios/perfil/${correo}`).subscribe({
+      this.http.get<any>(`${API_SERVER}/usuarios/perfil/${correo}`).subscribe({
         next: (data) => {
-          this.usuario = data;
-          console.log('Perfil cargado:', this.usuario);
+          this.usuario = {
+            id: data.idUsuario, 
+            nombre: data.nombre,
+            correo: data.correo,
+            contrasena: data.contrasena,
+            rol: data.rol
+          };
+          console.log('Perfil cargado con ID:', this.usuario);
         },
         error: (err) => {
           console.error('Error al cargar el perfil:', err);
@@ -53,7 +60,7 @@ export class DashboardComponent implements OnInit {
         contrasena: this.usuario.contrasena
       };
 
-      this.http.put(`http://localhost:8080/api/usuarios/${this.usuario.id}`, datos).subscribe({
+      this.http.put(`${API_SERVER}/usuarios/${this.usuario.id}`, datos).subscribe({
         next: () => {
           alert('¡Datos actualizados correctamente!');
         },

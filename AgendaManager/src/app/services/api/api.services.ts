@@ -1,54 +1,48 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UsuarioDTO } from './usuario.dto';
-import { FormularioDTO } from './formulario.dto';
 import { Observable } from 'rxjs';
-import { LaboresAcademicasDTO } from './laboresAcademicas.dto';
-import { LaboresCientificasDTO } from './LaboresCientificas.dto';
+import { API_SERVER } from './config-api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-
-  private usuariosapiUrl = 'http://localhost:8080/AgendaManager/api/usuarios/perfil';
-  private apiUrl = 'http://localhost:8080/AgendaManager/api';
+  private BASE_URL = API_SERVER; 
 
   constructor(private http: HttpClient) {}
+
   getUsuarios() {
-    return this.http.get<UsuarioDTO[]>(this.usuariosapiUrl);
+    return this.http.get<UsuarioDTO[]>(`${this.BASE_URL}/usuarios/perfil`);
   }
 
   getPerfilUsuario() {
-    return this.http.get<UsuarioDTO>('http://localhost:8080/api/usuarios/perfil');
+    return this.http.get<UsuarioDTO>(`${this.BASE_URL}/usuarios/perfil`);
   }
-
-  private formularioapiUrl = 'http://localhost:8080/AgendaManager/api/formulario';
 
   crearFormulario(formulario: any): Observable<any> {
-    const url = 'http://localhost:8080/api/formulario';
-    return this.http.post<any>(url, formulario);
+    return this.http.post<any>(`${this.BASE_URL}/formulario`, formulario);
   }
-  private laboresAcademicasapiUrl = 'http://localhost:8080/AgendaManager/api/labores-academicas';
+
   guardarLaboresAcademicas(datosLabores: any): Observable<any> {
-    const url = 'http://localhost:8080/api/labores-academicas';
-    return this.http.post<any>(url, datosLabores);
+    return this.http.post<any>(`${this.BASE_URL}/labores-academicas`, datosLabores);
   }
 
   guardarLaboresCientificas(datos: any): Observable<any> {
-    return this.http.post('http://localhost:8080/api/labores-cientificas', datos, {
+    return this.http.post(`${this.BASE_URL}/labores-cientificas`, datos, {
       responseType: 'text'
     });
   }
 
   guardarLaboresExtension(datosExtension: any): Observable<any> {
-    return this.http.post('http://localhost:8080/api/labores-extension', datosExtension, {
+    return this.http.post(`${this.BASE_URL}/labores-extension`, datosExtension, {
       responseType: 'text'
     });
   }
+
   guardarGestionAcademica(datosGestion: any): Observable<any> {
-    return this.http.post('http://localhost:8080/api/gestion-academica', datosGestion, {
+    return this.http.post(`${this.BASE_URL}/labores-gestion-academica`, datosGestion, {
       responseType: 'text'
     });
   }

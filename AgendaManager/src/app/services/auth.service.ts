@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private isBrowser = typeof window !== 'undefined'; // ✅ detectar navegador
+  private isBrowser = typeof window !== 'undefined'; 
 
   constructor(private router: Router) {}
 

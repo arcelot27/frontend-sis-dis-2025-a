@@ -1,30 +1,35 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { API_SERVER } from './config-api';
 
-export interface HistorialFormulario {
-  id: number;
-  fecha: string;
-  accion: string;
-  usuario: string;
-  descripcion: string;
-}
-
-@Injectable({
-  providedIn: 'root'
-})
 export class HistorialService {
-  private apiUrl = 'http://localhost:8080/api/historial';
+
+  private BASE_URL = API_SERVER; // Usa la variable importada
+  private ruta = `${this.BASE_URL}/historial`;
 
   constructor(private http: HttpClient) {}
 
-  getHistorial(usuario: string): Observable<HistorialFormulario[]> {
-    return this.http.get<HistorialFormulario[]>(`${this.apiUrl}/${usuario}`);
-  }
-
-  descargarFormulario(id: number): Observable<Blob> {
-    return this.http.get(`${this.apiUrl}/descargar/${id}`, {
+  descargarFormularioExcel(idFormulario: number) {
+    return this.http.get(`${this.ruta}/descargar/${idFormulario}`, {
       responseType: 'blob'
     });
+  }
+
+  aprobarFormulario(idFormulario: number, revisorId: number) {
+    return this.http.put(`${this.ruta}/aprobar/${idFormulario}`, {
+      idRevisor: revisorId
+    });
+  }
+
+  denegarFormulario(idFormulario: number, revisorId: number, motivo: string) {
+    return this.http.put(`${this.ruta}/denegar/${idFormulario}`, {
+      idRevisor: revisorId,
+      motivo: motivo
+    });
+  }
+
+  // ✅ Nuevo método para obtener formularios devueltos por usuario
+  getFormulariosDevueltos(idUsuario: number) {
+    return this.http.get<any[]>(`${this.ruta}/devueltos/${idUsuario}`);
   }
 }

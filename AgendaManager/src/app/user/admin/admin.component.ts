@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { API_SERVER } from '../../services/api/config-api';
 
 @Component({
   selector: 'app-dashboard-admin',
@@ -30,7 +31,7 @@ export class DashboardComponent implements OnInit {
     const correo = localStorage.getItem('correo');
 
     if (correo) {
-      this.http.get<any>(`http://localhost:8080/api/usuarios/perfil/${correo}`).subscribe({
+      this.http.get<any>(`${API_SERVER}/usuarios/perfil/${correo}`).subscribe({
         next: (data) => {
           this.usuario = data;
         },
@@ -54,7 +55,7 @@ export class DashboardComponent implements OnInit {
       contrasena: this.usuario.contrasena
     };
 
-    this.http.put(`http://localhost:8080/api/usuarios/${this.usuario.id}`, datos).subscribe({
+    this.http.put(`${API_SERVER}/usuarios/${this.usuario.id}`, datos).subscribe({
       next: () => {
         alert('¡Datos actualizados correctamente!');
       },

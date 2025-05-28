@@ -1,7 +1,32 @@
-.login{
-    background-image: url('../../public/imagen_corhuila.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    width: 100vw;
-  }
+/* Estructura general para mantener el footer abajo */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+app-footer {
+  margin-top: auto;
+}
+
+/* Vista login con fondo de pantalla */
+.login {
+  background-image: url('../../public/imagen_corhuila.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+}
